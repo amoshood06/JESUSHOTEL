@@ -204,24 +204,20 @@ try {
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
                     Explore From <span class="text-teal-600">Top Categories</span>
                 </h2>
-                <a href="#" class="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
-                    View All
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </a>
             </div>
 
-            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 <!-- Category icons -->
-                <div class="flex flex-col items-center gap-3 group cursor-pointer">
-                    <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
-                        <svg class="h-8 w-8 md:h-10 md:w-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                        </svg>
-                    </div>
+                <ahref="room.php">
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer">
+                        <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
+                            <svg class="h-8 w-8 md:h-10 md:w-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
                     <span class="text-sm font-medium text-center">Rooms</span>
-                </div>
+                    </div>
+                </ahref=>
                 <a href="food.php#food-section">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
                         <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-green-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
@@ -261,24 +257,26 @@ try {
                         <span class="text-sm font-medium text-center">Events</span>
                     </div>
                 </a>
-
-                <div class="flex flex-col items-center gap-3 group cursor-pointer">
-                    <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-teal-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
-                        <svg class="h-8 w-8 md:h-10 md:w-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
-                        </svg>
+                <a href="contact.php">
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer">
+                        <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-teal-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
+                            <svg class="h-8 w-8 md:h-10 md:w-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-center">Services</span>
                     </div>
-                    <span class="text-sm font-medium text-center">Services</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-3 group cursor-pointer">
-                    <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-amber-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
-                        <svg class="h-8 w-8 md:h-10 md:w-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
+                </a>
+                <a href="contact.php">
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer">
+                        <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-amber-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
+                            <svg class="h-8 w-8 md:h-10 md:w-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-center">Offers</span>
                     </div>
-                    <span class="text-sm font-medium text-center">Offers</span>
-                </div>
+                </a>
             </div>
         </div>
     </section>
