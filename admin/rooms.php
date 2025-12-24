@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = 'Error deleting room: ' . $e->getMessage();
             $messageType = 'error';
         }
+    }
 }
 
 // Get all rooms
