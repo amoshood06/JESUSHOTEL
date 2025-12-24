@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="shared-styles.css">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Top Bar -->
