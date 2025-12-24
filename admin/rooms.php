@@ -1,6 +1,8 @@
 <?php
 require_once '../config/database.php';
 
+$user = getCurrentUser();
+
 // Check if user is logged in and is admin/staff
 if (!isLoggedIn() || !isStaff()) {
     redirect('../login.php');

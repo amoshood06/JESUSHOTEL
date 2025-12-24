@@ -1,3 +1,116 @@
+<?php
+require_once '../config/database.php';
+
+$user = getCurrentUser();
+
+// Check if user is logged in and is admin/staff
+if (!isLoggedIn() || !isStaff()) {
+    redirect('../login.php');
+}
+
+// Helper functions for image handling
+function uploadRoomImage($file) {
+    $uploadDir = '../asset/image/rooms/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    $maxSize = 5 * 1024 * 1024; // 5MB
+
+    if (!in_array($file['type'], $allowedTypes)) {
+        throw new Exception('Invalid file type. Only JPG, PNG, and WebP are allowed.');
+    }
+
+    if ($file['size'] > $maxSize) {
+        throw new Exception('File size too large. Maximum size is 5MB.');
+    }
+
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = 'room_' . time() . '_' . uniqid() . '.' . $extension;
+    $filepath = $uploadDir . $filename;
+
+    if (move_uploaded_file($file['tmp_name'], $filepath)) {
+        return 'asset/image/rooms/' . $filename;
+    } else {
+        throw new Exception('Failed to upload image.');
+    }
+}
+
+function deleteRoomImage($imageUrl) {
+    if ($imageUrl && file_exists('../' . $imageUrl)) {
+        unlink('../' . $imageUrl);
+    }
+}
+
+$message = '';
+$messageType = '';
+
+// Handle room update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_room'])) {
+    $room_id = (int)$_POST['room_id'];
+    $room_number = sanitize($_POST['room_number']);
+    $room_type = sanitize($_POST['room_type']);
+    $capacity = (int)$_POST['capacity'];
+    $price_per_night = (float)$_POST['price_per_night'];
+    $description = sanitize($_POST['description']);
+    $status = sanitize($_POST['status']);
+    $amenities = $_POST['amenities'] ?? '[]';
+    $features = $_POST['features'] ?? '[]';
+
+    // Handle image upload
+    $image_url = sanitize($_POST['existing_image'] ?? null);
+    if (isset($_FILES['room_image']) && $_FILES['room_image']['error'] === UPLOAD_ERR_OK) {
+        $new_image_url = uploadRoomImage($_FILES['room_image']);
+        if ($new_image_url) {
+            // Delete old image if exists
+            if ($image_url) {
+                deleteRoomImage($image_url);
+            }
+            $image_url = $new_image_url;
+        }
+    }
+
+    try {
+        $stmt = $pdo->prepare("UPDATE rooms SET room_number = ?, room_type = ?, capacity = ?, price_per_night = ?, description = ?, status = ?, amenities = ?, features = ?, image_url = ? WHERE room_id = ?");
+        $stmt->execute([$room_number, $room_type, $capacity, $price_per_night, $description, $status, $amenities, $features, $image_url, $room_id]);
+        
+        // Redirect back to rooms.php with a success message
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        $_SESSION['message'] = 'Room updated successfully!';
+        $_SESSION['message_type'] = 'success';
+        redirect('rooms.php');
+        
+    } catch(PDOException $e) {
+        $message = 'Error updating room: ' . $e->getMessage();
+        $messageType = 'error';
+    }
+}
+
+// Get room details
+$room_id = (int)($_GET['id'] ?? 0);
+if ($room_id === 0) {
+    redirect('rooms.php');
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT * FROM rooms WHERE room_id = ?");
+    $stmt->execute([$room_id]);
+    $room = $stmt->fetch();
+    if (!$room) {
+        redirect('rooms.php');
+    }
+} catch(PDOException $e) {
+    error_log('Error fetching room: ' . $e->getMessage());
+    redirect('rooms.php');
+}
+
+$pageTitle = 'Edit Room';
+$currentPage = 'rooms';
+require_once 'admin-header.php';
+?>
 <div class="p-8">
     <div class="flex justify-between items-center mb-8">
         <div>
