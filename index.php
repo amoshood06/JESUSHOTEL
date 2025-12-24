@@ -222,7 +222,7 @@ try {
                     </div>
                     <span class="text-sm font-medium text-center">Rooms</span>
                 </div>
-                <a href="food-menu.php#food-section">
+                <a href="food.php#food-section">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
                         <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-green-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
                             <svg class="h-8 w-8 md:h-10 md:w-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,7 +232,7 @@ try {
                         <span class="text-sm font-medium text-center">Food</span>
                     </div>
                 </a>
-                <a href="food-menu.php#drinks-section">
+                <a href="food.php#drinks-section">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
                         
                         <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-purple-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
