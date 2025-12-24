@@ -206,7 +206,7 @@ try {
                 </h2>
             </div>
 
-            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 place-items-center">
                 <!-- Category icons -->
                 <ahref="room.php">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
