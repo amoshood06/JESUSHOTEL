@@ -47,8 +47,8 @@
                     <ul class="space-y-3 text-sm text-white/80">
                         <li><a href="about.php" class="hover:text-white transition-colors">About Us</a></li>
                         <li><a href="contact.php" class="hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.php" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.php" class="hover:text-white transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
 

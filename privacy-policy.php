@@ -10,7 +10,7 @@ include 'header.php';
             <p><strong>Last Updated: December 24, 2025</strong></p>
 
             <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">1. Introduction</h2>
-            <p>Welcome to [Your Website Name]. We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy outlines how we collect, use, and disclose your information when you use our services.</p>
+            <p>Welcome to Ailla Okada Hotel. We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy outlines how we collect, use, and disclose your information when you use our services.</p>
 
             <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">2. Information We Collect</h2>
             <p>We may collect personal information such as your name, email address, phone number, and payment details when you make a booking, register an account, or contact us. We also collect non-personal information like IP addresses, browser types, and usage data to improve our services.</p>
@@ -21,7 +21,7 @@ include 'header.php';
                 <li>Process bookings and payments.</li>
                 <li>Manage your account and provide customer support.</li>
                 <li>Improve our website and services.</li>
-                <li>Send you updates, promotions, and important notices (with your consent).</li>
+                <li>Send you updates, promotions, and important notices.</li>
                 <li>Comply with legal obligations.</li>
             </ul>
 
@@ -38,7 +38,7 @@ include 'header.php';
             <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
 
             <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">8. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at [Your Contact Email/Method].</p>
+            <p>If you have any questions about this Privacy Policy, please contact us at contact@avillaokada.com.</p>
         </div>
     </div>
 </section>
