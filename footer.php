@@ -87,9 +87,8 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
                     <p>&copy; 2025 AVILLA OKADA HOTEL. All rights reserved.</p>
                     <div class="flex gap-6">
-                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                        <a href="privacy-policy.php" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="terms-and-conditions.php" class="hover:text-white transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>
