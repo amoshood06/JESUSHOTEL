@@ -47,6 +47,14 @@ function deleteRoomImage($imageUrl) {
 $message = '';
 $messageType = '';
 
+// Check for messages from other pages
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $messageType = $_SESSION['message_type'] ?? 'success';
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_room'])) {
         // Add new room
@@ -72,30 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messageType = 'success';
         } catch(PDOException $e) {
             $message = 'Error adding room: ' . $e->getMessage();
-            $messageType = 'error';
-        }
-    } elseif (isset($_POST['delete_room'])) {
-        // Hard delete room
-        $room_id = (int)$_POST['room_id'];
-
-        try {
-            // First, get the image URL to delete the file
-            $stmt = $pdo->prepare("SELECT image_url FROM rooms WHERE room_id = ?");
-            $stmt->execute([$room_id]);
-            $room = $stmt->fetch();
-
-            if ($room && !empty($room['image_url'])) {
-                deleteRoomImage($room['image_url']);
-            }
-
-            // Now, delete the room record
-            $stmt = $pdo->prepare("DELETE FROM rooms WHERE room_id = ?");
-            $stmt->execute([$room_id]);
-            
-            $message = 'Room deleted successfully!';
-            $messageType = 'success';
-        } catch(PDOException $e) {
-            $message = 'Error deleting room: ' . $e->getMessage();
             $messageType = 'error';
         }
     }
@@ -436,15 +420,8 @@ function closeAddRoomModal() {
 
 
 function deleteRoom(id, number) {
-    if (confirm(`Are you sure you want to delete Room ${number}? This action cannot be undone.`)) {
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.innerHTML = `
-            <input type="hidden" name="room_id" value="${id}">
-            <input type="hidden" name="delete_room" value="1">
-        `;
-        document.body.appendChild(form);
-        form.submit();
+    if (confirm(`Are you sure you want to delete Room ${number}? This action is permanent.`)) {
+        window.location.href = `delete-room.php?id=${id}`;
     }
 }
 
