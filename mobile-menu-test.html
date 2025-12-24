@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test - AVILLA OKADA HOTEL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-teal-600 text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <!-- Logo/Brand -->
+                <div class="flex items-center gap-2 text-sm md:hidden">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="font-semibold">AVILLA OKADA</span>
+                </div>
+
+                <!-- Desktop info -->
+                <div class="hidden md:flex items-center gap-2 text-sm">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span>Admin Panel - AVILLA OKADA HOTEL</span>
+                </div>
+
+                <div class="flex items-center gap-6 text-sm">
+                    <span>Welcome, Test Admin</span>
+                    <a href="#" class="hover:text-teal-100 transition-colors">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:relative md:inset-0 md:z-auto overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="h-10 w-10 rounded-lg bg-teal-600 flex items-center justify-center">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold text-teal-600">AVILLA OKADA</span>
+                    </a>
+                    <!-- Close button for mobile -->
+                    <button id="close-sidebar" class="md:hidden p-1 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="space-y-1">
+                    <a href="#" class="admin-nav active bg-teal-50 text-teal-600 font-medium flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                        </svg>
+                        Overview
+                    </a>
+
+                    <a href="#" class="admin-nav flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Rooms
+                    </a>
+
+                    <a href="#" class="admin-nav flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Bookings
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile overlay -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden" onclick="closeMobileMenu()"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto md:ml-0">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-900 mb-6">Mobile Menu Test</h1>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <p class="text-gray-600 mb-4">Test the mobile menu functionality:</p>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Resize your browser window to mobile size (&lt; 768px)</li>
+                        <li>Click the hamburger menu button in the top bar</li>
+                        <li>The sidebar should slide in from the left</li>
+                        <li>Click the X button or overlay to close the menu</li>
+                        <li>On desktop (&gt;= 768px), the sidebar should be permanently visible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (sidebar.classList.contains('-translate-x-full')) {
+                // Open menu
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                // Close menu
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (closeSidebarButton) {
+                closeSidebarButton.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking on navigation links (mobile)
+            const navLinks = document.querySelectorAll('.admin-nav');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) { // md breakpoint
+                        closeMobileMenu();
+                    }
+                });
+            });
+
+            // Close menu on window resize if desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    closeMobileMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
