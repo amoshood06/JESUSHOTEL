@@ -96,6 +96,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="app.js"></script>
     <script src="asset/js/hero-slider.js"></script>
     <script src="asset/js/food-pagination.js"></script>

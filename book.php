@@ -177,15 +177,17 @@ $current_date = date('Y-m-d');
             <div class="md:w-1/2 p-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Booking Details</h2>
                 <form action="" method="POST" class="space-y-4">
+                    <input type="hidden" id="price_per_night" value="<?= htmlspecialchars($room['price_per_night']) ?>">
+                    <input type="hidden" id="room_id_hidden" value="<?= htmlspecialchars($room['room_id']) ?>">
                     <div>
                         <label for="check_in_date" class="block text-sm font-medium text-gray-700">Check-in Date</label>
-                        <input type="text" id="check_in_date" name="check_in_date" required
+                        <input type="date" id="check_in_date" name="check_in_date" required
                                value="<?= htmlspecialchars($check_in_date) ?>"
                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 flatpickr-input">
                     </div>
                     <div>
                         <label for="check_out_date" class="block text-sm font-medium text-gray-700">Check-out Date</label>
-                        <input type="text" id="check_out_date" name="check_out_date" required
+                        <input type="date" id="check_out_date" name="check_out_date" required
                                value="<?= htmlspecialchars($check_out_date) ?>"
                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 flatpickr-input">
                     </div>
@@ -216,4 +218,83 @@ $current_date = date('Y-m-d');
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkInInput = document.getElementById('check_in_date');
+        const checkOutInput = document.getElementById('check_out_date');
+        const totalNightsSpan = document.getElementById('total_nights');
+        const totalAmountSpan = document.getElementById('total_amount');
+        const pricePerNight = parseFloat(document.getElementById('price_per_night').value);
+
+        let checkInPicker;
+        let checkOutPicker;
+
+        const commonFlatpickrOptions = {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "F j, Y",
+            minDate: "today",
+            enableTime: false,
+            // You can add more styling or customization options here if needed
+        };
+
+        checkInPicker = flatpickr(checkInInput, {
+            ...commonFlatpickrOptions,
+            onChange: function(selectedDates, dateStr, instance) {
+                if (selectedDates.length > 0) {
+                    checkOutPicker.set('minDate', selectedDates[0]);
+                    if (checkOutPicker.selectedDates.length > 0 && checkOutPicker.selectedDates[0] < selectedDates[0]) {
+                        checkOutPicker.setDate(selectedDates[0]); // Reset checkout if it's before check-in
+                    }
+                } else {
+                    checkOutPicker.set('minDate', 'today');
+                }
+                updateBookingSummary();
+            }
+        });
+
+        checkOutPicker = flatpickr(checkOutInput, {
+            ...commonFlatpickrOptions,
+            onChange: function(selectedDates, dateStr, instance) {
+                updateBookingSummary();
+            }
+        });
+
+        function updateBookingSummary() {
+            const checkInDate = checkInPicker.selectedDates[0];
+            const checkOutDate = checkOutPicker.selectedDates[0];
+            console.log('Check-in Date:', checkInDate);
+            console.log('Check-out Date:', checkOutDate);
+            console.log('Price per Night:', pricePerNight);
+
+            if (checkInDate && checkOutDate) {
+                const diffTime = Math.abs(checkOutDate - checkInDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                console.log('Difference in Days:', diffDays);
+                
+                if (diffDays > 0) {
+                    totalNightsSpan.textContent = diffDays;
+                    const totalAmount = diffDays * pricePerNight;
+                    totalAmountSpan.textContent = formatCurrency(totalAmount);
+                    console.log('Total Amount:', totalAmount);
+                } else {
+                    totalNightsSpan.textContent = 0;
+                    totalAmountSpan.textContent = formatCurrency(0);
+                    console.log('Total Amount (0 nights):', 0);
+                }
+            } else {
+                totalNightsSpan.textContent = 0;
+                totalAmountSpan.textContent = formatCurrency(0);
+                console.log('Total Amount (no dates):', 0);
+            }
+        }
+
+        // Initial update in case dates are pre-filled (e.g., from a failed submission)
+        updateBookingSummary();
+
+        // Helper function for currency formatting (assuming NGN based on PHP code)
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(amount);
+        }
+    });
+</script>
