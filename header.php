@@ -1,3 +1,14 @@
+<?php
+require_once 'config/database.php'; // Ensure session is started and helpers are available
+
+// Calculate cart item count
+$cartItemCount = 0;
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $cartItemCount += $item['quantity'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,13 +84,26 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                             </svg>
                             <span class="hidden md:inline">Cart</span>
+                            <?php if ($cartItemCount > 0): ?>
+                                <span class="ml-1 px-2 py-0.5 text-xs font-bold bg-red-500 text-white rounded-full"><?= $cartItemCount ?></span>
+                            <?php endif; ?>
                         </button>
                     </a>
-                    <a href="login.php">
-                        <button class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors hidden md:block">
-                            Login
-                        </button>
-                    </a>
+                    <?php if (!isLoggedIn()): ?>
+                        <a href="login.php">
+                            <button class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors hidden md:block">
+                                Login
+                            </button>
+                        </a>
+                    <?php else:
+                        $dashboard_link = isAdmin() ? 'admin/admin-dashboard.php' : 'user/user-dashboard.php';
+                        ?>
+                        <a href="<?= $dashboard_link ?>">
+                            <button class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors hidden md:block">
+                                Dashboard
+                            </button>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
 
