@@ -50,7 +50,7 @@ $available_room_types = $room_types_stmt->fetchAll(PDO::FETCH_COLUMN);
         <form action="room.php" method="GET" class="bg-white p-6 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
             <div>
                 <label for="room_type" class="block text-sm font-medium text-gray-700 mb-1">Room Type</label>
-                <select id="room_type" name="room_type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                <select id="room_type" name="room_type" class="block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
                     <option value="all" <?= $room_type_filter === 'all' ? 'selected' : '' ?>>All Room Types</option>
                     <?php foreach ($available_room_types as $type): ?>
                         <option value="<?= htmlspecialchars($type) ?>" <?= $room_type_filter === $type ? 'selected' : '' ?>>
@@ -62,12 +62,12 @@ $available_room_types = $room_types_stmt->fetchAll(PDO::FETCH_COLUMN);
             <div>
                 <label for="min_price" class="block text-sm font-medium text-gray-700 mb-1">Min Price (₦)</label>
                 <input type="number" id="min_price" name="min_price" value="<?= htmlspecialchars($min_price_filter) ?>"
-                       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., 10000">
+                       class="block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., 10000">
             </div>
             <div>
                 <label for="max_price" class="block text-sm font-medium text-gray-700 mb-1">Max Price (₦)</label>
                 <input type="number" id="max_price" name="max_price" value="<?= htmlspecialchars($max_price_filter) ?>"
-                       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., 50000">
+                       class="block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., 50000">
             </div>
             <div>
                 <button type="submit" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">

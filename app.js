@@ -80,6 +80,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize admin dashboard
     initAdminDashboard();
+
+    // FAQ Toggle
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const svg = this.querySelector('svg');
+
+            const isHidden = content.classList.contains('hidden');
+
+            // Hide all other open FAQs
+            document.querySelectorAll('.faq-content').forEach(c => {
+                c.classList.add('hidden');
+                const prevSvg = c.previousElementSibling.querySelector('svg');
+                if (prevSvg) {
+                    prevSvg.classList.remove('rotate-180');
+                }
+            });
+
+            if (isHidden) {
+                // Show this FAQ
+                content.classList.remove('hidden');
+                if (svg) {
+                    svg.classList.add('rotate-180');
+                }
+            }
+            // If it was already open, the above loop has already closed it.
+        });
+    });
 });
 
 function validateForm(form) {

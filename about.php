@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="relative h-96 rounded-2xl overflow-hidden shadow-lg">
-                    <img src="/executive-hotel-suite-elegant-luxury.jpg" alt="Hotel Interior" class="w-full h-full object-cover">
+                    <img src="asset/image/IMG-20251129-WA0045.jpg" alt="Hotel Interior" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -265,10 +265,10 @@
                     Book your stay today and discover why we're the preferred choice for travelers in Edo State
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="index.html" class="bg-white text-teal-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold inline-block">
+                    <a href="room.php" class="bg-white text-teal-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold inline-block">
                         Book Now
                     </a>
-                    <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors font-semibold inline-block">
+                    <a href="contact.php" class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors font-semibold inline-block">
                         Contact Us
                     </a>
                 </div>

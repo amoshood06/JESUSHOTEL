@@ -62,7 +62,7 @@ try {
                 <!-- Category Filter -->
                 <div>
                     <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                    <select id="category" name="category" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm rounded-md">
+                    <select id="category" name="category" class="mt-1 p-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm rounded-md">
                         <option value="">All Categories</option>
                         <?php foreach ($allCategories as $cat): ?>
                             <option value="<?= htmlspecialchars($cat) ?>" <?= ($selectedCategory === $cat) ? 'selected' : '' ?>><?= htmlspecialchars($cat) ?></option>
@@ -74,14 +74,14 @@ try {
                 <div>
                     <label for="min_price" class="block text-sm font-medium text-gray-700">Min Price</label>
                     <input type="number" id="min_price" name="min_price" value="<?= htmlspecialchars($_GET['min_price'] ?? '') ?>"
-                           class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="e.g., 1000">
+                           class="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="e.g., 1000">
                 </div>
 
                 <!-- Max Price Filter -->
                 <div>
                     <label for="max_price" class="block text-sm font-medium text-gray-700">Max Price</label>
                     <input type="number" id="max_price" name="max_price" value="<?= htmlspecialchars($_GET['max_price'] ?? '') ?>"
-                           class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="e.g., 5000">
+                           class="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="e.g., 5000">
                 </div>
             </div>
             <div class="mt-6 flex justify-end">

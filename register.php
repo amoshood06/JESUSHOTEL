@@ -87,83 +87,135 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form class="space-y-6" action="register.php" method="POST" data-validate>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label for="first_name" class="block text-sm font-medium text-gray-700">
-                            First name *
-                        </label>
-                        <div class="mt-1">
-                            <input id="first_name" name="first_name" type="text" required
-                                   class="form-input" value="<?php echo sanitize($_POST['first_name'] ?? ''); ?>">
-                        </div>
-                    </div>
 
-                    <div>
-                        <label for="last_name" class="block text-sm font-medium text-gray-700">
-                            Last name *
-                        </label>
-                        <div class="mt-1">
-                            <input id="last_name" name="last_name" type="text" required
-                                   class="form-input" value="<?php echo sanitize($_POST['last_name'] ?? ''); ?>">
-                        </div>
-                    </div>
-                </div>
+    <!-- Name Fields -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+            <label for="first_name" class="block text-sm font-semibold text-gray-700">
+                First name <span class="text-red-500">*</span>
+            </label>
+            <input
+                id="first_name"
+                name="first_name"
+                type="text"
+                required
+                value="<?php echo sanitize($_POST['first_name'] ?? ''); ?>"
+                class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+                placeholder="John"
+            >
+        </div>
 
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
-                        Email address *
-                    </label>
-                    <div class="mt-1">
-                        <input id="email" name="email" type="email" autocomplete="email" required
-                               class="form-input" value="<?php echo sanitize($_POST['email'] ?? ''); ?>">
-                    </div>
-                </div>
+        <div>
+            <label for="last_name" class="block text-sm font-semibold text-gray-700">
+                Last name <span class="text-red-500">*</span>
+            </label>
+            <input
+                id="last_name"
+                name="last_name"
+                type="text"
+                required
+                value="<?php echo sanitize($_POST['last_name'] ?? ''); ?>"
+                class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+                placeholder="Doe"
+            >
+        </div>
+    </div>
 
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700">
-                        Phone number
-                    </label>
-                    <div class="mt-1">
-                        <input id="phone" name="phone" type="tel" autocomplete="tel"
-                               class="form-input" value="<?php echo sanitize($_POST['phone'] ?? ''); ?>">
-                    </div>
-                </div>
+    <!-- Email -->
+    <div>
+        <label for="email" class="block text-sm font-semibold text-gray-700">
+            Email address <span class="text-red-500">*</span>
+        </label>
+        <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            value="<?php echo sanitize($_POST['email'] ?? ''); ?>"
+            class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+            placeholder="you@example.com"
+        >
+    </div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">
-                        Password *
-                    </label>
-                    <div class="mt-1">
-                        <input id="password" name="password" type="password" required
-                               class="form-input" minlength="8">
-                    </div>
-                    <p class="mt-1 text-sm text-gray-500">Must be at least 8 characters long</p>
-                </div>
+    <!-- Phone -->
+    <div>
+        <label for="phone" class="block text-sm font-semibold text-gray-700">
+            Phone number
+        </label>
+        <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            value="<?php echo sanitize($_POST['phone'] ?? ''); ?>"
+            class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+            placeholder="+234 800 000 0000"
+        >
+    </div>
 
-                <div>
-                    <label for="confirm_password" class="block text-sm font-medium text-gray-700">
-                        Confirm password *
-                    </label>
-                    <div class="mt-1">
-                        <input id="confirm_password" name="confirm_password" type="password" required
-                               class="form-input">
-                    </div>
-                </div>
+    <!-- Password -->
+    <div>
+        <label for="password" class="block text-sm font-semibold text-gray-700">
+            Password <span class="text-red-500">*</span>
+        </label>
+        <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            minlength="8"
+            class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+            placeholder="••••••••"
+        >
+        <p class="mt-1 text-xs text-gray-500">
+            Must be at least 8 characters long
+        </p>
+    </div>
 
-                <div class="flex items-center">
-                    <input id="terms" name="terms" type="checkbox" required
-                           class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded">
-                    <label for="terms" class="ml-2 block text-sm text-gray-900">
-                        I agree to the <a href="#" class="text-teal-600 hover:text-teal-500">Terms of Service</a> and <a href="#" class="text-teal-600 hover:text-teal-500">Privacy Policy</a>
-                    </label>
-                </div>
+    <!-- Confirm Password -->
+    <div>
+        <label for="confirm_password" class="block text-sm font-semibold text-gray-700">
+            Confirm password <span class="text-red-500">*</span>
+        </label>
+        <input
+            id="confirm_password"
+            name="confirm_password"
+            type="password"
+            required
+            class="mt-1 p-2 w-full rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500/30 transition"
+            placeholder="••••••••"
+        >
+    </div>
 
-                <div>
-                    <button type="submit" class="btn-primary w-full">
-                        Create account
-                    </button>
-                </div>
-            </form>
+    <!-- Terms -->
+    <div class="flex items-start gap-3">
+        <input
+            id="terms"
+            name="terms"
+            type="checkbox"
+            required
+            class="mt-1 h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+        >
+        <label for="terms" class="text-sm text-gray-700">
+            I agree to the
+            <a href="#" class="font-medium text-teal-600 hover:underline">Terms of Service</a>
+            and
+            <a href="#" class="font-medium text-teal-600 hover:underline">Privacy Policy</a>
+        </label>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+        <button
+            type="submit"
+            class="w-full rounded-lg bg-teal-600 py-3 text-white font-semibold shadow-md hover:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-500/40 transition"
+        >
+            Create account
+        </button>
+    </div>
+
+</form>
 
             <div class="mt-6">
                 <div class="relative">
@@ -175,9 +227,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <div class="mt-6">
-                    <a href="login.php" class="btn-secondary w-full text-center">
-                        Sign in instead
+                <div class="mt-6 flex justify-center">
+                    <a href="login.php" class="w-full flex justify-center py-3 px-4 border-2 border-teal-200 text-sm font-semibold rounded-xl text-teal-700 bg-teal-50 hover:bg-teal-100 hover:border-teal-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transform hover:scale-[1.02] transition-all duration-200">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                        Login
                     </a>
                 </div>
             </div>
