@@ -397,7 +397,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="amenities" id="amenities_input_add">
+                <input type="hidden" name="amenities" id="amenities_input_add" value="[]">
             </div>
 
             <!-- Features -->
@@ -423,7 +423,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="features" id="features_input_add">
+                <input type="hidden" name="features" id="features_input_add" value="[]">
             </div>
 
             <!-- Actions -->
