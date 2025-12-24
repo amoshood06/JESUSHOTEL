@@ -679,6 +679,8 @@ function deleteRoom(id, number) {
     }
 }
 
+
+
 // Amenities and Features Management Functions
 function addAmenity(mode) {
     const selectId = `amenities_select_${mode}`;
