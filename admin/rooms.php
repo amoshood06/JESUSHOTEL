@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price_per_night = (float)$_POST['price_per_night'];
         $description = sanitize($_POST['description']);
         $status = sanitize($_POST['status']);
-        $amenities = isset($_POST['amenities']) ? json_encode($_POST['amenities']) : '[]';
-        $features = isset($_POST['features']) ? json_encode($_POST['features']) : '[]';
+        $amenities = $_POST['amenities'] ?? '[]';
+        $features = $_POST['features'] ?? '[]';
 
         // Handle image upload
         $image_url = null;
@@ -81,8 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price_per_night = (float)$_POST['price_per_night'];
         $description = sanitize($_POST['description']);
         $status = sanitize($_POST['status']);
-        $amenities = isset($_POST['amenities']) ? json_encode($_POST['amenities']) : '[]';
-        $features = isset($_POST['features']) ? json_encode($_POST['features']) : '[]';
+        $amenities = $_POST['amenities'] ?? '[]';
+        $features = $_POST['features'] ?? '[]';
 
         // Handle image upload
         $image_url = sanitize($_POST['existing_image'] ?? null);
@@ -246,7 +246,7 @@ require_once 'admin-header.php';
                         <td class="px-6 py-4">
                             <div class="flex gap-2">
                                 <button
-                                    onclick="editRoom(<?php echo $room['room_id']; ?>, '<?php echo htmlspecialchars($room['room_number']); ?>', '<?php echo htmlspecialchars($room['room_type']); ?>', <?php echo $room['capacity']; ?>, <?php echo $room['price_per_night']; ?>, '<?php echo htmlspecialchars($room['description']); ?>', '<?php echo $room['status']; ?>', '<?php echo htmlspecialchars($room['amenities'] ?? '[]'); ?>', '<?php echo htmlspecialchars($room['features'] ?? '[]'); ?>', '<?php echo htmlspecialchars($room['image_url']); ?>')"
+                                    onclick="editRoom(<?php echo $room['room_id']; ?>, '<?php echo htmlspecialchars($room['room_number']); ?>', '<?php echo htmlspecialchars($room['room_type']); ?>', <?php echo $room['capacity']; ?>, <?php echo $room['price_per_night']; ?>, '<?php echo htmlspecialchars($room['description']); ?>', '<?php echo $room['status']; ?>', '<?php echo $room['amenities'] ?? '[]'; ?>', '<?php echo $room['features'] ?? '[]'; ?>', '<?php echo htmlspecialchars($room['image_url']); ?>')"
                                     class="px-3 py-1.5 text-xs rounded-lg border border-blue-500 text-blue-600
                                            hover:bg-blue-500 hover:text-white transition">
                                     Edit
@@ -397,7 +397,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="amenities[]" id="amenities_input_add">
+                <input type="hidden" name="amenities" id="amenities_input_add">
             </div>
 
             <!-- Features -->
@@ -423,7 +423,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="features[]" id="features_input_add">
+                <input type="hidden" name="features" id="features_input_add">
             </div>
 
             <!-- Actions -->
@@ -586,7 +586,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="amenities[]" id="amenities_input_edit">
+                <input type="hidden" name="amenities" id="amenities_input_edit">
             </div>
 
             <!-- Features -->
@@ -612,7 +612,7 @@ require_once 'admin-header.php';
                         </button>
                     </div>
                 </div>
-                <input type="hidden" name="features[]" id="features_input_edit">
+                <input type="hidden" name="features" id="features_input_edit">
             </div>
 
             <!-- Actions -->
@@ -663,12 +663,36 @@ function editRoom(id, number, type, capacity, price, description, status, amenit
     }
 
     // Handle amenities
-    const amenitiesArray = JSON.parse(amenities || '[]');
+    let amenitiesArray = [];
+    try {
+        const parsedAmenities = JSON.parse(amenities || '[]');
+        if (Array.isArray(parsedAmenities)) {
+            if (parsedAmenities.length > 0 && typeof parsedAmenities[0] === 'string' && parsedAmenities[0].startsWith('[')) {
+                amenitiesArray = JSON.parse(parsedAmenities[0]);
+            } else {
+                amenitiesArray = parsedAmenities;
+            }
+        }
+    } catch (e) {
+        // Did not parse, so probably not a JSON string.
+    }
     updateAmenitiesDisplay('edit', amenitiesArray);
     updateAmenitiesInput('edit', amenitiesArray);
 
     // Handle features
-    const featuresArray = JSON.parse(features || '[]');
+    let featuresArray = [];
+    try {
+        const parsedFeatures = JSON.parse(features || '[]');
+        if (Array.isArray(parsedFeatures)) {
+            if (parsedFeatures.length > 0 && typeof parsedFeatures[0] === 'string' && parsedFeatures[0].startsWith('[')) {
+                featuresArray = JSON.parse(parsedFeatures[0]);
+            } else {
+                featuresArray = parsedFeatures;
+            }
+        }
+    } catch (e) {
+        // Did not parse, so probably not a JSON string.
+    }
     updateFeaturesDisplay('edit', featuresArray);
     updateFeaturesInput('edit', featuresArray);
 

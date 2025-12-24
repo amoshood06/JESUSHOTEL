@@ -325,7 +325,7 @@ CREATE TABLE `rooms` (
   `room_type` enum('Standard Room','Deluxe Room','Executive Suite') NOT NULL,
   `capacity` int(11) NOT NULL,
   `price_per_night` decimal(10,2) NOT NULL,
-  `status` enum('available','occupied','maintenance','reserved') DEFAULT 'available',
+  `status` enum('available','occupied','maintenance','reserved','unavailable') DEFAULT 'available',
   `description` text DEFAULT NULL,
   `amenities` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`amenities`)),
   `features` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`features`)),
