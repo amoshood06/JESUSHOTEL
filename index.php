@@ -208,7 +208,7 @@ try {
 
             <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 place-items-center">
                 <!-- Category icons -->
-                <ahref="room.php">
+                <a href="room.php">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
                         <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
                             <svg class="h-8 w-8 md:h-10 md:w-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,7 +217,7 @@ try {
                         </div>
                     <span class="text-sm font-medium text-center">Rooms</span>
                     </div>
-                </ahref=>
+                </a>
                 <a href="food.php#food-section">
                     <div class="flex flex-col items-center gap-3 group cursor-pointer">
                         <div class="h-20 w-20 md:h-24 md:w-24 rounded-full bg-green-50 flex items-center justify-center group-hover:scale-110 transition-transform border-2 border-transparent group-hover:border-teal-500">
