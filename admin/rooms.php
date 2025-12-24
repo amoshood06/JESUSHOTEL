@@ -72,54 +72,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = 'Error adding room: ' . $e->getMessage();
             $messageType = 'error';
         }
-    } elseif (isset($_POST['update_room'])) {
-        // Update room
-        $room_id = (int)$_POST['room_id'];
-        $room_number = sanitize($_POST['room_number']);
-        $room_type = sanitize($_POST['room_type']);
-        $capacity = (int)$_POST['capacity'];
-        $price_per_night = (float)$_POST['price_per_night'];
-        $description = sanitize($_POST['description']);
-        $status = sanitize($_POST['status']);
-        $amenities = $_POST['amenities'] ?? '[]';
-        $features = $_POST['features'] ?? '[]';
-
-        // Handle image upload
-        $image_url = sanitize($_POST['existing_image'] ?? null);
-        if (isset($_FILES['room_image']) && $_FILES['room_image']['error'] === UPLOAD_ERR_OK) {
-            $new_image_url = uploadRoomImage($_FILES['room_image']);
-            if ($new_image_url) {
-                // Delete old image if exists
-                if ($image_url) {
-                    deleteRoomImage($image_url);
-                }
-                $image_url = $new_image_url;
-            }
-        }
-
-        try {
-            $stmt = $pdo->prepare("UPDATE rooms SET room_number = ?, room_type = ?, capacity = ?, price_per_night = ?, description = ?, status = ?, amenities = ?, features = ?, image_url = ? WHERE room_id = ?");
-            $stmt->execute([$room_number, $room_type, $capacity, $price_per_night, $description, $status, $amenities, $features, $image_url, $room_id]);
-            $message = 'Room updated successfully!';
-            $messageType = 'success';
-        } catch(PDOException $e) {
-            $message = 'Error updating room: ' . $e->getMessage();
-            $messageType = 'error';
-        }
     } elseif (isset($_POST['delete_room'])) {
-        // Soft delete room by updating status to 'unavailable'
+        // Hard delete room
         $room_id = (int)$_POST['room_id'];
 
         try {
-            $stmt = $pdo->prepare("UPDATE rooms SET status = 'unavailable' WHERE room_id = ?");
+            // First, get the image URL to delete the file
+            $stmt = $pdo->prepare("SELECT image_url FROM rooms WHERE room_id = ?");
             $stmt->execute([$room_id]);
-            $message = 'Room marked as unavailable successfully!';
+            $room = $stmt->fetch();
+
+            if ($room && !empty($room['image_url'])) {
+                deleteRoomImage($room['image_url']);
+            }
+
+            // Now, delete the room record
+            $stmt = $pdo->prepare("DELETE FROM rooms WHERE room_id = ?");
+            $stmt->execute([$room_id]);
+            
+            $message = 'Room deleted successfully!';
             $messageType = 'success';
         } catch(PDOException $e) {
-            $message = 'Error marking room as unavailable: ' . $e->getMessage();
+            $message = 'Error deleting room: ' . $e->getMessage();
             $messageType = 'error';
         }
-    }
+    
 }
 
 // Get all rooms
@@ -245,12 +222,11 @@ require_once 'admin-header.php';
                         <!-- Actions -->
                         <td class="px-6 py-4">
                             <div class="flex gap-2">
-                                <button
-                                    onclick="editRoom(<?php echo $room['room_id']; ?>, '<?php echo htmlspecialchars($room['room_number']); ?>', '<?php echo htmlspecialchars($room['room_type']); ?>', <?php echo $room['capacity']; ?>, <?php echo $room['price_per_night']; ?>, '<?php echo htmlspecialchars($room['description']); ?>', '<?php echo $room['status']; ?>', '<?php echo $room['amenities'] ?? '[]'; ?>', '<?php echo $room['features'] ?? '[]'; ?>', '<?php echo htmlspecialchars($room['image_url']); ?>')"
-                                    class="px-3 py-1.5 text-xs rounded-lg border border-blue-500 text-blue-600
-                                           hover:bg-blue-500 hover:text-white transition">
+                                <a href="rooms-edit.php?id=<?php echo $room['room_id']; ?>"
+                                   class="px-3 py-1.5 text-xs rounded-lg border border-blue-500 text-blue-600
+                                          hover:bg-blue-500 hover:text-white transition">
                                     Edit
-                                </button>
+                                </a>
 
                                 <button
                                     onclick="deleteRoom(<?php echo $room['room_id']; ?>, '<?php echo htmlspecialchars($room['room_number']); ?>')"
@@ -444,193 +420,7 @@ require_once 'admin-header.php';
 </div>
 
 
-<!-- Edit Room Modal -->
-<div id="editRoomModal"
-     class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex items-start justify-center overflow-y-auto">
 
-    <div class="bg-white w-full max-w-lg mt-20 rounded-2xl shadow-xl border border-gray-200">
-
-        <!-- Header -->
-        <div class="flex items-center justify-between px-6 py-4 border-b bg-gray-50 rounded-t-2xl">
-            <h3 class="text-lg font-semibold text-gray-800">Edit Room</h3>
-            <button onclick="closeEditRoomModal()"
-                    class="text-gray-400 hover:text-gray-600 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Form -->
-        <form method="POST" enctype="multipart/form-data" class="p-6 space-y-5">
-
-            <!-- Hidden Fields -->
-            <input type="hidden" name="room_id" id="edit_room_id">
-            <input type="hidden" name="existing_image" id="edit_existing_image">
-
-            <!-- Room Number -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Room Number</label>
-                <input type="text" name="room_number" id="edit_room_number" required
-                       class="w-full rounded-lg border border-gray-300 px-3 py-2
-                              focus:outline-none focus:ring-2 focus:ring-orange-500
-                              focus:border-orange-500">
-            </div>
-
-            <!-- Room Type -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Room Type</label>
-                <select name="room_type" id="edit_room_type" required
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2
-                               focus:outline-none focus:ring-2 focus:ring-orange-500">
-                    <option value="Standard Room">Standard Room</option>
-                    <option value="Deluxe Room">Deluxe Room</option>
-                    <option value="Executive Suite">Executive Suite</option>
-                </select>
-            </div>
-
-            <!-- Status -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Status</label>
-                <select name="status" id="edit_status" required
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2
-                               focus:outline-none focus:ring-2 focus:ring-orange-500">
-                    <option value="available">Available</option>
-                    <option value="occupied">Occupied</option>
-                    <option value="maintenance">Maintenance</option>
-                    <option value="unavailable">Unavailable</option>
-                </select>
-            </div>
-
-            <!-- Capacity & Price -->
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-1">Capacity</label>
-                    <input type="number" name="capacity" id="edit_capacity" min="1" max="10" required
-                           class="w-full rounded-lg border border-gray-300 px-3 py-2
-                                  focus:ring-2 focus:ring-orange-500">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-1">
-                        Price / Night (₦)
-                    </label>
-                    <input type="number" name="price_per_night" id="edit_price_per_night"
-                           step="0.01" min="0" required
-                           class="w-full rounded-lg border border-gray-300 px-3 py-2
-                                  focus:ring-2 focus:ring-orange-500">
-                </div>
-            </div>
-
-            <!-- Description -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
-                <textarea name="description" id="edit_description" rows="3"
-                          class="w-full rounded-lg border border-gray-300 px-3 py-2
-                                 focus:ring-2 focus:ring-orange-500"></textarea>
-            </div>
-
-            <!-- Image -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Room Image</label>
-
-                <!-- Current Image -->
-                <div id="current_image_container"
-                     class="hidden mb-3 p-2 rounded-lg border bg-gray-50">
-                    <p class="text-xs text-gray-600 mb-1">Current Image</p>
-                    <img id="current_image"
-                         class="h-36 w-full object-cover rounded-lg border">
-                </div>
-
-                <!-- Upload -->
-                <input type="file" name="room_image" accept="image/*"
-                       class="w-full rounded-lg border border-gray-300 px-3 py-2
-                              focus:ring-2 focus:ring-orange-500"
-                       onchange="previewImage(this, 'image_preview_edit')">
-
-                <!-- Preview -->
-                <div id="image_preview_edit" class="hidden mt-3">
-                    <p class="text-xs text-gray-600 mb-1">New Image Preview</p>
-                    <img id="preview_img_edit"
-                         class="h-36 w-full object-cover rounded-lg border">
-                </div>
-
-                <p class="text-xs text-gray-500 mt-1">
-                    Upload a new image to replace the current one (JPG, PNG · max 5MB)
-                </p>
-            </div>
-
-            <!-- Amenities -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Amenities</label>
-                <div class="space-y-2">
-                    <div class="flex flex-wrap gap-2" id="amenities_tags_edit"></div>
-                    <div class="flex gap-2">
-                        <select id="amenities_select_edit"
-                                class="flex-1 rounded-lg border border-gray-300 px-3 py-2
-                                       focus:ring-2 focus:ring-orange-500">
-                            <option value="">Select amenity...</option>
-                            <option>WiFi</option>
-                            <option>Air Conditioning</option>
-                            <option>TV</option>
-                            <option>Mini Bar</option>
-                            <option>Balcony</option>
-                            <option>Jacuzzi</option>
-                        </select>
-                        <button type="button" onclick="addAmenity('edit')"
-                                class="px-4 py-2 rounded-lg border border-orange-500
-                                       text-orange-600 text-sm font-medium
-                                       hover:bg-orange-500 hover:text-white transition">
-                            Add
-                        </button>
-                    </div>
-                </div>
-                <input type="hidden" name="amenities" id="amenities_input_edit">
-            </div>
-
-            <!-- Features -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Features</label>
-                <div class="space-y-2">
-                    <div class="flex flex-wrap gap-2" id="features_tags_edit"></div>
-                    <div class="flex gap-2">
-                        <select id="features_select_edit"
-                                class="flex-1 rounded-lg border border-gray-300 px-3 py-2
-                                       focus:ring-2 focus:ring-orange-500">
-                            <option value="">Select feature...</option>
-                            <option>King Size Bed</option>
-                            <option>Work Desk</option>
-                            <option>Sofa</option>
-                            <option>Kitchen</option>
-                        </select>
-                        <button type="button" onclick="addFeature('edit')"
-                                class="px-4 py-2 rounded-lg border border-orange-500
-                                       text-orange-600 text-sm font-medium
-                                       hover:bg-orange-500 hover:text-white transition">
-                            Add
-                        </button>
-                    </div>
-                </div>
-                <input type="hidden" name="features" id="features_input_edit">
-            </div>
-
-            <!-- Actions -->
-            <div class="flex justify-end gap-3 pt-4 border-t">
-                <button type="button" onclick="closeEditRoomModal()"
-                        class="px-5 py-2 rounded-lg border border-gray-300 text-gray-700
-                               hover:bg-gray-100 transition">
-                    Cancel
-                </button>
-                <button type="submit" name="update_room"
-                        class="px-6 py-2 rounded-lg bg-orange-500 text-white font-semibold
-                               hover:bg-orange-600 transition">
-                    Update Room
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
 
 
 <script>
@@ -642,66 +432,6 @@ function closeAddRoomModal() {
     document.getElementById('addRoomModal').classList.add('hidden');
 }
 
-function editRoom(id, number, type, capacity, price, description, status, amenities = '[]', features = '[]', imageUrl = null) {
-    document.getElementById('edit_room_id').value = id;
-    document.getElementById('edit_room_number').value = number;
-    document.getElementById('edit_room_type').value = type;
-    document.getElementById('edit_capacity').value = capacity;
-    document.getElementById('edit_price_per_night').value = price;
-    document.getElementById('edit_description').value = description;
-    document.getElementById('edit_status').value = status;
-    document.getElementById('edit_existing_image').value = imageUrl || '';
-
-    // Handle image display
-    const currentImageContainer = document.getElementById('current_image_container');
-    const currentImage = document.getElementById('current_image');
-    if (imageUrl) {
-        currentImage.src = '../' + imageUrl;
-        currentImageContainer.classList.remove('hidden');
-    } else {
-        currentImageContainer.classList.add('hidden');
-    }
-
-    // Handle amenities
-    let amenitiesArray = [];
-    try {
-        const parsedAmenities = JSON.parse(amenities || '[]');
-        if (Array.isArray(parsedAmenities)) {
-            if (parsedAmenities.length > 0 && typeof parsedAmenities[0] === 'string' && parsedAmenities[0].startsWith('[')) {
-                amenitiesArray = JSON.parse(parsedAmenities[0]);
-            } else {
-                amenitiesArray = parsedAmenities;
-            }
-        }
-    } catch (e) {
-        // Did not parse, so probably not a JSON string.
-    }
-    updateAmenitiesDisplay('edit', amenitiesArray);
-    updateAmenitiesInput('edit', amenitiesArray);
-
-    // Handle features
-    let featuresArray = [];
-    try {
-        const parsedFeatures = JSON.parse(features || '[]');
-        if (Array.isArray(parsedFeatures)) {
-            if (parsedFeatures.length > 0 && typeof parsedFeatures[0] === 'string' && parsedFeatures[0].startsWith('[')) {
-                featuresArray = JSON.parse(parsedFeatures[0]);
-            } else {
-                featuresArray = parsedFeatures;
-            }
-        }
-    } catch (e) {
-        // Did not parse, so probably not a JSON string.
-    }
-    updateFeaturesDisplay('edit', featuresArray);
-    updateFeaturesInput('edit', featuresArray);
-
-    document.getElementById('editRoomModal').classList.remove('hidden');
-}
-
-function closeEditRoomModal() {
-    document.getElementById('editRoomModal').classList.add('hidden');
-}
 
 function deleteRoom(id, number) {
     if (confirm(`Are you sure you want to delete Room ${number}? This action cannot be undone.`)) {
