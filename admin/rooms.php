@@ -312,6 +312,19 @@ require_once 'admin-header.php';
                 </select>
             </div>
 
+            <!-- Status -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Status</label>
+                <select name="status" required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2
+                               focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <option value="available">Available</option>
+                    <option value="occupied">Occupied</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="unavailable">Unavailable</option>
+                </select>
+            </div>
+
             <!-- Capacity & Price -->
             <div class="grid grid-cols-2 gap-4">
                 <div>
