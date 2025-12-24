@@ -4,12 +4,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config/database.php';
-include 'header.php';
 
 // Item 2: Implement user login check
 if (!isLoggedIn()) {
     redirect('login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
 }
+
+include 'header.php';
 
 $room = null;
 $room_id = $_GET['room_id'] ?? null;
