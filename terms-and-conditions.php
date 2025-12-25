@@ -10,7 +10,7 @@ include 'header.php';
             <p><strong>Last Updated: December 24, 2025</strong></p>
 
             <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">1. Acceptance of Terms</h2>
-            <p>By accessing and using this website ([Your Website Name]), you agree to comply with and be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website.</p>
+            <p>By accessing and using this website Avillaokadahotel, you agree to comply with and be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website.</p>
 
             <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">2. Services Offered</h2>
             <p>We provide services related to [e.g., hotel bookings, food ordering, event management]. Details of these services are available on our website.</p>
