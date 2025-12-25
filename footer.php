@@ -33,9 +33,9 @@
                 <div>
                     <h3 class="font-bold text-lg mb-4">Our Services</h3>
                     <ul class="space-y-3 text-sm text-white/80">
-                        <li><a href="#rooms" class="hover:text-white transition-colors">Room Booking</a></li>
-                        <li><a href="#food" class="hover:text-white transition-colors">Food & Drinks</a></li>
-                        <li><a href="#drinks" class="hover:text-white transition-colors">Bar & Beverages</a></li>
+                        <li><a href="room.php" class="hover:text-white transition-colors">Room Booking</a></li>
+                        <li><a href="food.php" class="hover:text-white transition-colors">Food & Drinks</a></li>
+                        <li><a href="food.php" class="hover:text-white transition-colors">Bar & Beverages</a></li>
                         <li><a href="contact.php" class="hover:text-white transition-colors">Event Hosting</a></li>
                         <li><a href="contact.php" class="hover:text-white transition-colors">Laundry Services</a></li>
                     </ul>
