@@ -158,9 +158,9 @@ try {
                                     <?php
                                     // Calculate discount percentage (example: 25% off for Deluxe, 30% for Executive)
                                     $discount = 0;
-                                    if ($room['room_type'] === 'Deluxe Room') $discount = 25;
-                                    elseif ($room['room_type'] === 'Executive Suite') $discount = 30;
-                                    elseif ($room['room_type'] === 'Standard Room') $discount = 20;
+                                    if ($room['room_type'] === 'Deluxe Room') $discount = 0;
+                                    elseif ($room['room_type'] === 'Executive Suite') $discount = 0;
+                                    elseif ($room['room_type'] === 'Standard Room') $discount = 0;
                                     echo $discount > 0 ? $discount . '% OFF' : 'Available';
                                     ?>
                                 </span>
