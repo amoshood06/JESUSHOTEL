@@ -214,6 +214,7 @@ CREATE TABLE `food_menu` (
   `menu_item_id` int(11) NOT NULL,
   `item_name` varchar(150) NOT NULL,
   `category` enum('Nigerian Dishes','Continental Plates','Breakfast Specials','Drinks','Appetizers','Desserts') NOT NULL,
+  `drink_category` enum('Wine','Beer','Spirit','Cocktail','Juice','Soda','Water', 'softdrink') DEFAULT NULL,
   `description` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `availability` tinyint(1) DEFAULT 1,

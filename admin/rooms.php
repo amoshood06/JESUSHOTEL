@@ -420,7 +420,7 @@ function closeAddRoomModal() {
 
 
 function deleteRoom(id, number) {
-    if (confirm(`Are you sure you want to delete Room ${number}? This action is permanent.`)) {
+    if (confirm(`Are you sure you want to delete Room ${number}? This action is permanent and cannot be undone.`)) {
         window.location.href = `delete-room.php?id=${id}`;
     }
 }

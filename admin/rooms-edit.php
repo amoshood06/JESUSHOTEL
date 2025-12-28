@@ -309,16 +309,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let amenitiesArray = [];
     try {
         const amenitiesValue = document.getElementById('amenities_input_edit').value;
-        const parsedAmenities = JSON.parse(amenitiesValue || '[]');
-        if (Array.isArray(parsedAmenities)) {
-            if (parsedAmenities.length > 0 && typeof parsedAmenities[0] === 'string' && parsedAmenities[0].startsWith('[')) {
-                amenitiesArray = JSON.parse(parsedAmenities[0]);
-            } else {
-                amenitiesArray = parsedAmenities;
-            }
+        if (amenitiesValue) {
+            amenitiesArray = JSON.parse(amenitiesValue);
         }
     } catch (e) {
-        // Did not parse, so probably not a JSON string.
+        console.error("Could not parse amenities JSON:", e);
     }
     updateAmenitiesDisplay('edit', amenitiesArray);
     updateAmenitiesInput('edit', amenitiesArray);
@@ -327,16 +322,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let featuresArray = [];
     try {
         const featuresValue = document.getElementById('features_input_edit').value;
-        const parsedFeatures = JSON.parse(featuresValue || '[]');
-        if (Array.isArray(parsedFeatures)) {
-            if (parsedFeatures.length > 0 && typeof parsedFeatures[0] === 'string' && parsedFeatures[0].startsWith('[')) {
-                featuresArray = JSON.parse(parsedFeatures[0]);
-            } else {
-                featuresArray = parsedFeatures;
-            }
+        if (featuresValue) {
+            featuresArray = JSON.parse(featuresValue);
         }
     } catch (e) {
-        // Did not parse, so probably not a JSON string.
+        console.error("Could not parse features JSON:", e);
     }
     updateFeaturesDisplay('edit', featuresArray);
     updateFeaturesInput('edit', featuresArray);
@@ -346,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Amenities and Features Management Functions
 function addAmenity(mode) {
     const selectId = `amenities_select_${mode}`;
-    const tagsId = `amenities_tags_${mode}`;
     const select = document.getElementById(selectId);
     const value = select.value;
 
@@ -370,7 +359,6 @@ function removeAmenity(mode, amenity) {
 
 function addFeature(mode) {
     const selectId = `features_select_${mode}`;
-    const tagsId = `features_tags_${mode}`;
     const select = document.getElementById(selectId);
     const value = select.value;
 
@@ -398,7 +386,7 @@ function getCurrentAmenities(mode) {
     try {
         return input.value ? JSON.parse(input.value) : [];
     } catch (e) {
-        // Handle cases where the value is not valid JSON
+        console.error("Could not parse amenities JSON:", e);
         return [];
     }
 }
@@ -409,6 +397,7 @@ function getCurrentFeatures(mode) {
     try {
         return input.value ? JSON.parse(input.value) : [];
     } catch(e) {
+        console.error("Could not parse features JSON:", e);
         return [];
     }
 }

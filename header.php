@@ -115,17 +115,23 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                     </svg>
                     Rooms
                 </a>
-                <a href="food.php#food-section" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
+                <a href="food.php" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                     </svg>
                     Food
                 </a>
-                <a href="food.php#drinks-section" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
+                <a href="drink.php" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                     </svg>
                     Drinks
+                </a>
+                <a href="entertainment.php" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.148-6.443a1.76 1.76 0 011.164-2.264l5.524-1.84a1.76 1.76 0 012.264 1.164l2.148 6.443A1.76 1.76 0 0111 19.241v-7.359"/>
+                    </svg>
+                    Entertainment
                 </a>
                 <a href="about.php" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm whitespace-nowrap">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,11 +187,17 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                     </svg>
                     Food
                 </a>
-                <a href="#drinks" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                <a href="drink.php" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                     </svg>
                     Drinks
+                </a>
+                <a href="entertainment.php" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.148-6.443a1.76 1.76 0 011.164-2.264l5.524-1.84a1.76 1.76 0 012.264 1.164l2.148 6.443A1.76 1.76 0 0111 19.241v-7.359"/>
+                    </svg>
+                    Entertainment
                 </a>
                 <a href="about.php" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

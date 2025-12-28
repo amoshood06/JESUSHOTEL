@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Example: To send an email (requires mail server configuration)
         
-        $to = "contact@avillaokada.com"; // Replace with your actual email
+        $to = "avillaokadahotel@gmail.com"; // Replace with your actual email
         $headers = "From: " . $email . "\r\n";
         $headers .= "Reply-To: " . $email . "\r\n";
         $emailBody = "Name: $name\nEmail: $email\nSubject: $subject\nMessage:\n$messageContent";
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        <span>info@avillaokada.com</span>
+                        <span>avillaokadahotel@gmail.com</span>
                     </div>
                     <div class="flex items-center space-x-3 bg-green-500 p-3 rounded-lg text-white">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

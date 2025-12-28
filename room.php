@@ -87,7 +87,7 @@ $available_room_types = $room_types_stmt->fetchAll(PDO::FETCH_COLUMN);
                              class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h2 class="text-xl font-semibold text-gray-800 mb-2">
-                                <?= htmlspecialchars($room['room_type']) ?> - Room <?= htmlspecialchars($room['room_number']) ?>
+                                <?= htmlspecialchars($room['room_type']) ?>
                             </h2>
                             <p class="text-gray-600 mb-4 text-sm">
                                 <?= htmlspecialchars($room['description'] ?? 'No description available.') ?>

@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $preparation_time = (int)$_POST['preparation_time'];
         $is_vegetarian = isset($_POST['is_vegetarian']) ? 1 : 0;
         $is_featured = isset($_POST['is_featured']) ? 1 : 0;
+        $drink_category = ($category === 'Drinks' && isset($_POST['drink_category'])) ? sanitize($_POST['drink_category']) : null;
         
         $image_url = null;
         if (isset($_FILES['item_image']) && $_FILES['item_image']['error'] === UPLOAD_ERR_OK) {
@@ -69,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         try {
-            $stmt = $pdo->prepare("INSERT INTO food_menu (item_name, category, description, price, availability, preparation_time, is_vegetarian, is_featured, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$item_name, $category, $description, $price, $availability, $preparation_time, $is_vegetarian, $is_featured, $image_url]);
+            $stmt = $pdo->prepare("INSERT INTO food_menu (item_name, category, drink_category, description, price, availability, preparation_time, is_vegetarian, is_featured, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$item_name, $category, $drink_category, $description, $price, $availability, $preparation_time, $is_vegetarian, $is_featured, $image_url]);
             $message = 'Menu item added successfully!';
             $messageType = 'success';
         } catch(PDOException $e) {
@@ -88,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $preparation_time = (int)$_POST['preparation_time'];
         $is_vegetarian = isset($_POST['is_vegetarian']) ? 1 : 0;
         $is_featured = isset($_POST['is_featured']) ? 1 : 0;
+        $drink_category = ($category === 'Drinks' && isset($_POST['drink_category'])) ? sanitize($_POST['drink_category']) : null;
 
         $current_image_url = sanitize($_POST['existing_image'] ?? null);
         $image_url = $current_image_url; // Default to existing image
@@ -106,8 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         try {
-            $stmt = $pdo->prepare("UPDATE food_menu SET item_name = ?, category = ?, description = ?, price = ?, availability = ?, preparation_time = ?, is_vegetarian = ?, is_featured = ?, image_url = ? WHERE menu_item_id = ?");
-            $stmt->execute([$item_name, $category, $description, $price, $availability, $preparation_time, $is_vegetarian, $is_featured, $image_url, $menu_item_id]);
+            $stmt = $pdo->prepare("UPDATE food_menu SET item_name = ?, category = ?, drink_category = ?, description = ?, price = ?, availability = ?, preparation_time = ?, is_vegetarian = ?, is_featured = ?, image_url = ? WHERE menu_item_id = ?");
+            $stmt->execute([$item_name, $category, $drink_category, $description, $price, $availability, $preparation_time, $is_vegetarian, $is_featured, $image_url, $menu_item_id]);
             $message = 'Menu item updated successfully!';
             $messageType = 'success';
         } catch(PDOException $e) {
@@ -142,7 +144,7 @@ $category_filter = $_GET['category'] ?? '';
 $availability_filter = $_GET['availability'] ?? '';
 
 // Build query with filters
-$query = "SELECT * FROM food_menu";
+$query = "SELECT *, drink_category FROM food_menu";
 $conditions = [];
 $params = [];
 
@@ -440,15 +442,30 @@ require_once 'admin-header.php';
             <!-- Category -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Category</label>
-                    <select name="category" required class="form-select">
+                    <select name="category" id="add_category" required class="form-select" onchange="toggleDrinkCategory('add')">
                         <option value="Nigerian Dishes">Nigerian Dishes</option>
                         <option value="Continental Plates">Continental Plates</option>
                         <option value="Breakfast Specials">Breakfast Specials</option>
-                        <option value="Drinks">Drinks & Beverages</option>
+                        <option value="Drinks">Drinks</option>
                         <option value="Appetizers">Appetizers</option>
                         <option value="Desserts">Desserts</option>
                     </select>
                 </div>
+
+            <!-- Drink Category (initially hidden) -->
+            <div id="add_drink_category_div" class="hidden">
+                <label class="block text-sm font-medium text-gray-700">Drink Category</label>
+                <select name="drink_category" id="add_drink_category" class="form-select">
+                    <option value="">Select Drink Category</option>
+                    <option value="Wine">Wine</option>
+                    <option value="Beer">Beer</option>
+                    <option value="Spirit">Spirit</option>
+                    <option value="Cocktail">Cocktail</option>
+                    <option value="Juice">Juice</option>
+                    <option value="Soda">Soda</option>
+                    <option value="Water">Water</option>
+                </select>
+            </div>
 
             <!-- Description -->
             <div>
@@ -578,15 +595,30 @@ require_once 'admin-header.php';
             <!-- Category -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Category</label>
-                    <select name="category" id="edit_category" required class="form-select">
+                    <select name="category" id="edit_category" required class="form-select" onchange="toggleDrinkCategory('edit')">
                         <option value="Nigerian Dishes">Nigerian Dishes</option>
                         <option value="Continental Plates">Continental Plates</option>
                         <option value="Breakfast Specials">Breakfast Specials</option>
-                        <option value="Drinks">Drinks & Beverages</option>
+                        <option value="Drinks">Drinks</option>
                         <option value="Appetizers">Appetizers</option>
                         <option value="Desserts">Desserts</option>
                     </select>
                 </div>
+
+            <!-- Drink Category (initially hidden) -->
+            <div id="edit_drink_category_div" class="hidden">
+                <label class="block text-sm font-medium text-gray-700">Drink Category</label>
+                <select name="drink_category" id="edit_drink_category" class="form-select">
+                    <option value="">Select Drink Category</option>
+                    <option value="Wine">Wine</option>
+                    <option value="Beer">Beer</option>
+                    <option value="Spirit">Spirit</option>
+                    <option value="Cocktail">Cocktail</option>
+                    <option value="Juice">Juice</option>
+                    <option value="Soda">Soda</option>
+                    <option value="Water">Water</option>
+                </select>
+            </div>
 
             <!-- Description -->
             <div>
@@ -684,8 +716,21 @@ require_once 'admin-header.php';
 
 
 <script>
+function toggleDrinkCategory(modalPrefix) {
+    const categorySelect = document.getElementById(modalPrefix + '_category');
+    const drinkCategoryDiv = document.getElementById(modalPrefix + '_drink_category_div');
+    if (categorySelect.value === 'Drinks') {
+        drinkCategoryDiv.classList.remove('hidden');
+    } else {
+        drinkCategoryDiv.classList.add('hidden');
+        // Optionally reset drink category selection when hidden
+        document.getElementById(modalPrefix + '_drink_category').value = ''; 
+    }
+}
+
 function openAddItemModal() {
     document.getElementById('addItemModal').classList.remove('hidden');
+    toggleDrinkCategory('add'); // Initialize drink category visibility
 }
 
 function closeAddItemModal() {
@@ -695,6 +740,7 @@ function closeAddItemModal() {
 function editItem(item) {
     document.getElementById('edit_menu_item_id').value = item.menu_item_id;
     document.getElementById('edit_item_name').value = item.item_name;
+    
     // Category handling - explicitly set selected option
     const categorySelect = document.getElementById('edit_category');
     for (let i = 0; i < categorySelect.options.length; i++) {
@@ -703,6 +749,21 @@ function editItem(item) {
             break;
         }
     }
+
+    // Drink Category handling
+    const drinkCategorySelect = document.getElementById('edit_drink_category');
+    if (item.category === 'Drinks' && item.drink_category) {
+        for (let i = 0; i < drinkCategorySelect.options.length; i++) {
+            if (drinkCategorySelect.options[i].value === item.drink_category) {
+                drinkCategorySelect.options[i].selected = true;
+                break;
+            }
+        }
+    } else {
+        drinkCategorySelect.value = ''; // Reset if not a drink or no sub-category
+    }
+    toggleDrinkCategory('edit'); // Call to ensure visibility is correct
+
     document.getElementById('edit_description').value = item.description || '';
     document.getElementById('edit_price').value = item.price;
     document.getElementById('edit_preparation_time').value = item.preparation_time;
@@ -733,14 +794,7 @@ function closeEditItemModal() {
 
 function deleteItem(id, name) {
     if (confirm(`Are you sure you want to delete "${name}"? This action cannot be undone.`)) {
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.innerHTML = `
-            <input type="hidden" name="menu_item_id" value="${id}">
-            <input type="hidden" name="delete_item" value="1">
-        `;
-        document.body.appendChild(form);
-        form.submit();
+        window.location.href = `food-menu.php?delete_item=${id}`; 
     }
 }
 

@@ -249,7 +249,7 @@ require_once 'admin-header.php';
         });
 
         const fpCheckOut = flatpickr(checkOutDate, {
-            dateFormat: 'Y-m-d',
+            dateFormat: 'Y-md',
             minDate: 'today',
             onChange: function(selectedDates, dateStr, instance) {
                 fpCheckIn.set('maxDate', dateStr);

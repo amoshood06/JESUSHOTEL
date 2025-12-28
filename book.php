@@ -303,3 +303,4 @@ $current_date = date('Y-m-d');
         }
     });
 </script>
+<?php include 'footer.php'; ?>

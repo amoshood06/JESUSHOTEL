@@ -288,9 +288,7 @@ function updateStatus(bookingId, status) {
         document.body.appendChild(form);
         form.submit();
     } else {
-        // Find the select and reset its value if cancellation
-        // This part is tricky as we don't know the original value client-side without more logic.
-        // A simple page reload is a robust way to reset the state if the user cancels the confirm dialog.
+        // Reload the page to reset the dropdown to its original state
         location.reload();
     }
 }
