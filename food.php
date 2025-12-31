@@ -108,12 +108,15 @@ try {
                                 <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($item['description'] ?? 'No description available.') ?></p>
                                 <div class="flex items-center justify-between">
                                     <span class="text-2xl font-bold text-teal-600"><?= formatCurrency($item['price']) ?></span>
-                                    <button class="add-to-cart-btn bg-teal-600 text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-                                            data-item-id="<?= htmlspecialchars($item['menu_item_id']) ?>"
-                                            data-item-name="<?= htmlspecialchars($item['item_name']) ?>"
-                                            data-item-price="<?= htmlspecialchars($item['price']) ?>">
-                                        Add to Cart
-                                    </button>
+                                    <form class="add-to-cart-form">
+                                        <input type="hidden" name="item_id" value="<?= $item['menu_item_id'] ?>">
+                                        <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">
+                                        <input type="hidden" name="item_price" value="<?= $item['price'] ?>">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="bg-teal-600 text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                                            Add to Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -125,39 +128,3 @@ try {
 </section>
 
 <?php include 'footer.php'; ?>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const cartButtons = document.querySelectorAll('.add-to-cart-btn');
-
-        cartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.dataset.itemId;
-                const itemName = this.dataset.itemName;
-                const itemPrice = this.dataset.itemPrice;
-
-                // Send an AJAX request to add the item to the cart
-                fetch('add_to_cart.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `item_id=${itemId}&item_name=${itemName}&item_price=${itemPrice}&quantity=1`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert(`${itemName} added to cart!`);
-                        // Optionally update a cart icon or counter here
-                    } else {
-                        alert(`Failed to add ${itemName} to cart: ${data.message}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error adding item to cart:', error);
-                    alert('An error occurred while adding to cart.');
-                });
-            });
-        });
-    });
-</script>

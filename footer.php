@@ -5,9 +5,7 @@
                 <!-- Brand -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-2">
-                        <div class="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center">
-                            <img src="asset/image/logo1.png" alt="">
-                        </div>
+                         <img src="asset/image/mylogo.jpg" class="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center" alt="">
                         <span class="text-2xl font-bold">AVILLA OKADA HOTEL</span>
                     </div>
                     <p class="text-white/80 text-sm leading-relaxed">
@@ -97,6 +95,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="app.js"></script>
+    <script src="asset/js/cart-ajax.js"></script>
     <script src="asset/js/hero-slider.js"></script>
     <script src="asset/js/food-pagination.js"></script>
 </body>

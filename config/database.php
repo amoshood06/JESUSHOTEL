@@ -1,14 +1,14 @@
 <?php
 // Database Configuration
-// define('DB_HOST', 'localhost');
-// define('DB_NAME', 'dvilla_okada');
-// define('DB_USER', 'root');
-// define('DB_PASS', '');
-
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'avillaok_hotel_booking');
-define('DB_USER', 'avillaok_hotel_booking');
-define('DB_PASS', 'avillaok_hotel_booking');
+define('DB_NAME', 'dvilla_okada');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+// define('DB_HOST', 'localhost');
+// define('DB_NAME', 'avillaok_hotel_booking');
+// define('DB_USER', 'avillaok_hotel_booking');
+// define('DB_PASS', 'avillaok_hotel_booking');
 
 
 // Create database connection

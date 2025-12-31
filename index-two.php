@@ -1,6 +1,24 @@
 <?php
 require_once 'config/database.php';
 include 'header.php';
+
+// Fetch featured food items for display
+try {
+    $stmt = $pdo->query("SELECT * FROM food_menu WHERE is_featured = 1 AND availability = 1 ORDER BY last_updated DESC");
+    $featuredFood = $stmt->fetchAll();
+} catch(PDOException $e) {
+    $featuredFood = [];
+    error_log('Error fetching featured food: ' . $e->getMessage());
+}
+
+// Fetch drinks for display
+try {
+    $stmt = $pdo->query("SELECT * FROM food_menu WHERE category = 'Drinks' AND availability = 1 ORDER BY last_updated DESC LIMIT 6");
+    $drinks = $stmt->fetchAll();
+} catch(PDOException $e) {
+    $drinks = [];
+    error_log('Error fetching drinks: ' . $e->getMessage());
+}
 ?>
 
     <!-- Hero Section -->
@@ -76,7 +94,7 @@ include 'header.php';
                         </div>
                     </div>
                     
-                    <a href="about.html" class="bg-teal-600 text-white px-8 py-3 rounded inline-block hover:bg-teal-700">Learn More About Us →</a>
+                    <a href="about.php" class="bg-teal-600 text-white px-8 py-3 rounded inline-block hover:bg-teal-700">Learn More About Us →</a>
                 </div>
                 <div class="md:w-1/2">
                     <img src="asset/image/room.jpg" alt="Hotel Room" class="rounded-lg shadow-xl w-full">
@@ -130,7 +148,7 @@ include 'header.php';
                         <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($room_description); ?></p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-teal-600">₦<?php echo number_format($room['price_per_night'], 0); ?><span class="text-sm text-gray-500">/night</span></span>
-                            <a href="room.php?id=<?php echo htmlspecialchars($room['room_id']); ?>" class="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700">Book Now</a>
+                            <a href="book.php?id=<?php echo htmlspecialchars($room['room_id']); ?>" class="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -142,6 +160,137 @@ include 'header.php';
             </div>
         </div>
     </section>
+
+    <!-- Food Section -->
+    <section id="food" class="py-16 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+                    Popular <span class="text-teal-600">Food & Dishes</span>
+                </h2>
+                <a href="food.php#food-section" class="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
+                    View All
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <?php if (empty($featuredFood)): ?>
+                <div class="text-center py-12 text-gray-500">
+                    <p>No featured food items available at the moment. Please check back later.</p>
+                </div>
+            <?php else: ?>
+                <div id="food-carousel">
+                <?php
+                $foodChunks = array_chunk($featuredFood, 4);
+                foreach ($foodChunks as $index => $chunk):
+                ?>
+                    <div class="food-page <?php echo $index === 0 ? 'active' : ''; ?>" data-page="<?php echo $index; ?>" style="<?php echo $index === 0 ? '' : 'display: none;'; ?>">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <?php 
+                            $colorClasses = [
+                                'from-orange-100 to-orange-50',
+                                'from-green-100 to-green-50',
+                                'from-red-100 to-red-50',
+                                'from-yellow-100 to-yellow-50',
+                            ];
+                            $i = $index * 4;
+                            foreach ($chunk as $food): 
+                                $color = $colorClasses[$i % count($colorClasses)];
+                                $i++;
+                            ?>
+                                <div class="bg-gradient-to-br <?php echo $color; ?> border-2 border-transparent hover:border-teal-500 transition-all cursor-pointer group overflow-hidden rounded-lg">
+                                    <div class="p-6 space-y-4">
+                                        <div class="space-y-2">
+                                            <span class="inline-block bg-orange-200 text-orange-800 px-3 py-1 rounded text-xs font-semibold">
+                                                <?php echo htmlspecialchars(strtoupper($food['category'])); ?>
+                                            </span>
+                                            <h3 class="text-xl font-bold text-gray-900"><?php echo htmlspecialchars($food['item_name']); ?></h3>
+                                            <p class="text-lg font-semibold text-teal-600"><?php echo htmlspecialchars($food['price']); ?></p>
+                                        </div>
+                                        <div class="relative h-40 rounded-lg overflow-hidden">
+                                            <img src="<?php echo htmlspecialchars($food['image_url'] ?? '/placeholder-image.png'); ?>" alt="<?php echo htmlspecialchars($food['item_name']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                        </div>
+                                        <form class="add-to-cart-form mt-4">
+                                            <input type="hidden" name="item_id" value="<?php echo $food['menu_item_id']; ?>">
+                                            <input type="hidden" name="item_name" value="<?php echo htmlspecialchars($food['item_name']); ?>">
+                                            <input type="hidden" name="item_price" value="<?php echo $food['price']; ?>">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                                                Add to Cart
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($featuredFood) && count($featuredFood) > 4): ?>
+            <!-- Pagination dots -->
+            <div id="food-pagination-dots" class="flex justify-center gap-2 mt-8">
+                <?php
+                $foodChunks = array_chunk($featuredFood, 4);
+                foreach ($foodChunks as $index => $chunk): 
+                ?>
+                <div class="food-dot h-2 w-2 rounded-full cursor-pointer <?php echo $index === 0 ? 'bg-teal-600' : 'bg-gray-300'; ?>" data-page="<?php echo $index; ?>"></div>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <!-- Drinks Section -->
+    <section id="drinks" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+                    Drinks & <span class="text-teal-600">Beverages</span>
+                </h2>
+                <a href="food.php#drinks-section" class="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
+                    View All
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                <!-- Drink cards -->
+                <?php if (empty($drinks)): ?>
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <p>No drinks available at the moment. Please check back later.</p>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($drinks as $drink): ?>
+                        <div class="bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-all cursor-pointer group overflow-hidden">
+                            <div class="relative aspect-square overflow-hidden bg-white">
+                                <img src="<?php echo htmlspecialchars($drink['image_url'] ?? '/placeholder-image.png'); ?>" alt="<?php echo htmlspecialchars($drink['item_name']); ?>" class="w-full h-full object-cover p-4 group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 text-center space-y-2">
+                                <h3 class="font-semibold text-sm"><?php echo htmlspecialchars($drink['item_name']); ?></h3>
+                                <p class="text-xs font-semibold text-teal-600"><?php echo htmlspecialchars($drink['price']); ?></p>
+                                <form class="add-to-cart-form pt-2">
+                                    <input type="hidden" name="item_id" value="<?php echo $drink['menu_item_id']; ?>">
+                                    <input type="hidden" name="item_name" value="<?php echo htmlspecialchars($drink['item_name']); ?>">
+                                    <input type="hidden" name="item_price" value="<?php echo $drink['price']; ?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="w-full bg-teal-600 text-white px-3 py-1 rounded-lg hover:bg-teal-700 transition-colors text-xs">
+                                        Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+            
 
     <!-- Food & Entertainment Preview -->
     <section class="py-16 bg-gray-50">
