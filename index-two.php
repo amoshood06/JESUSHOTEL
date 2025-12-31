@@ -146,6 +146,39 @@ try {
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2"><?php echo htmlspecialchars($room['room_type']); ?></h3>
                         <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($room_description); ?></p>
+                        
+                        <!-- Amenities -->
+    <h4 class="font-semibold text-gray-700 mb-2">Amenities</h4>
+    <div class="grid grid-cols-2 gap-3 text-sm text-gray-600 mb-4">
+        <div class="flex items-center gap-2">
+            🔆
+            <span>Air Conditioning</span>
+        </div>
+        <div class="flex items-center gap-2">
+            📺
+            <span>Flat-Screen TV</span>
+        </div>
+        <!-- <div class="flex items-center gap-2">
+            📶
+            <span>Free Wi-Fi</span>
+        </div> -->
+        <div class="flex items-center gap-2">
+            🚿
+            <span>Ensuite Bathroom</span>
+        </div>
+    </div>
+    <!-- Features -->
+    <h4 class="font-semibold text-gray-700 mb-2">Features</h4>
+    <ul class="space-y-2 text-sm text-gray-600 mb-5">
+        <li class="flex items-center gap-2">✔ Comfortable single bed</li>
+        <li class="flex items-center gap-2">✔ Study desk and chair</li>
+        <li class="flex items-center gap-2">✔ Wardrobe and storage</li>
+        <li class="flex items-center gap-2">✔ Reading light</li>
+        <li class="flex items-center gap-2">✔ Power outlets</li>
+    </ul>
+
+
+
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-teal-600">₦<?php echo number_format($room['price_per_night'], 0); ?><span class="text-sm text-gray-500">/night</span></span>
                             <a href="book.php?id=<?php echo htmlspecialchars($room['room_id']); ?>" class="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700">Book Now</a>
@@ -251,7 +284,7 @@ try {
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
                     Drinks & <span class="text-teal-600">Beverages</span>
                 </h2>
-                <a href="food.php#drinks-section" class="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
+                <a href="drink.php#drinks-section" class="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
                     View All
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
