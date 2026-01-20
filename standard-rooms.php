@@ -1,0 +1,250 @@
+<?php include 'header-one.php'; ?>
+<!--title section-->
+<section class="bg-white py-20 px-6 text-center">
+  <div class="max-w-5xl mx-auto flex flex-col items-center">
+    
+    <h2 class="font-serif text-5xl md:text-7xl text-gray-700 italic mb-6 tracking-tight">
+      Standard Rooms
+    </h2>
+    
+    <div class="w-40 h-[2px] bg-[#D48255] mb-8"></div>
+    
+    <p class="font-serif text-xl md:text-2xl text-gray-800 italic">
+      Come Let's Give You A Royal Treatment In Nature's Paradise!
+    </p>
+    
+  </div>
+</section>
+<!--standard rooms content-->
+<section class="relative w-full min-h-[800px] flex items-center justify-center py-20 px-6 font-sans overflow-hidden">
+  
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1974&auto=format&fit=crop" 
+         class="w-full h-full object-cover" 
+         alt="Hotel Ambiance">
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center">
+    
+    <div class="z-20 w-full md:w-2/5 bg-[#f2f2f2]/95 backdrop-blur-sm p-10 md:p-16 shadow-2xl md:-mr-20">
+      <h2 class="font-serif text-4xl text-gray-800 italic mb-1">The Standard</h2>
+      <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-10">R O O M</p>
+      
+      <ul class="space-y-0 text-[11px] font-bold uppercase tracking-widest text-gray-600">
+        <li class="flex items-center gap-4 py-4 border-t border-gray-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          BATHROOM / BATHROOM AMENITIES
+        </li>
+        <li class="flex items-center gap-4 py-4 border-t border-gray-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          FLAT SCREEN TV / DSTV
+        </li>
+        <li class="flex items-center gap-4 py-4 border-t border-gray-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          QUEENS SIZE BED
+        </li>
+        <li class="flex items-center gap-4 py-4 border-t border-gray-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          AIR-CONDITIONED
+        </li>
+        <li class="flex items-center gap-4 py-4 border-t border-b border-gray-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 17v-10l8 4"/></svg>
+          VANITY SET / WARDROBE
+        </li>
+      </ul>
+
+      <div class="mt-10 flex items-center gap-2 group cursor-pointer">
+        <span class="text-[10px] font-bold tracking-widest text-gray-400">GALLERY</span>
+        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z"/></svg>
+      </div>
+    </div>
+
+    <div class="z-10 w-full md:w-3/5 h-[500px] overflow-hidden shadow-2xl border-8 border-white">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070&auto=format&fit=crop" 
+           alt="Standard Room Interior" 
+           class="w-full h-full object-cover">
+    </div>
+
+  </div>
+</section>
+<!--Room sevice section-->
+<section class="w-full font-sans">
+  
+  <div class="bg-[#333333] py-20 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+      
+      <div class="border border-[#D48255] bg-white p-10 flex flex-col items-center text-center">
+        <div class="text-gray-500 mb-6">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm10 0c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zM3 2h18v2H3V2zm17 17H4v-7c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v7z"/></svg>
+        </div>
+        <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">Set of Lounge Chairs</h3>
+        <p class="text-[11px] text-gray-500 leading-relaxed">Two visitors chair and a center table, Reading table and chair</p>
+      </div>
+
+      <div class="border border-[#D48255] border-l-0 bg-white p-10 flex flex-col items-center text-center">
+        <div class="text-gray-500 mb-6">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4v8m8-8v8M8 8h8M8 12h8m-8 4h8" /></svg>
+        </div>
+        <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">Refrigerator/Intercom Hair Dryer/Hot Kettle</h3>
+      </div>
+
+      <div class="border border-[#D48255] border-l-0 bg-white p-10 flex flex-col items-center text-center">
+        <div class="text-gray-500 mb-6">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">No. of People</h3>
+        <p class="text-[11px] text-gray-500 leading-relaxed">2 adults / 2 children</p>
+      </div>
+
+      <div class="border border-[#D48255] border-l-0 bg-white p-10 flex flex-col items-center text-center">
+        <div class="text-gray-500 mb-6">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 1.9 1.55 3.1 3.48 3.53V21h3v-2.13c2.23-.44 3.5-1.75 3.5-3.64 0-2.25-1.56-3.39-4.3-4.33z"/></svg>
+        </div>
+        <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">Room Rate</h3>
+        <p class="text-base font-bold text-gray-700">₦ 60,000.00</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white py-20 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div class="text-[13px] text-gray-500 leading-relaxed">
+        Design and comfort are perfectly combined here, because we care about your well-being – all the materials used for room decoration are environment friendly, and your individual climate control can be adjusted accurately by degree.
+      </div>
+      <div class="text-[13px] text-gray-500 leading-relaxed">
+        Our suites of great conference halls are both impressive and flexible. Superior interior design, ambiance of natural sunlight and great looking shades of palm trees make them just as popular a choice for weddings and other tailor-made events as for business.
+      </div>
+    </div>
+  </div>
+
+</section>
+<!--other services-->
+<section class="w-full font-sans">
+  
+  <div class="relative flex flex-col md:flex-row h-[500px] overflow-hidden">
+    
+    <div class="relative w-full md:w-1/2 group cursor-pointer overflow-hidden border-r border-white/10">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" 
+           class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+           alt="Beautiful Room View">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
+      
+      <div class="relative z-10 flex flex-col items-center justify-center h-full text-white">
+        <h3 class="font-serif text-3xl italic mb-6">Beautiful View</h3>
+        <div class="w-16 h-16 rounded-full border border-white flex items-center justify-center hover:bg-[#D48255] hover:border-[#D48255] transition-all">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative w-full md:w-1/2 group cursor-pointer overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" 
+           class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+           alt="Air Conditioned Room">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
+      
+      <div class="relative z-10 flex flex-col items-center justify-center h-full text-white">
+        <h3 class="font-serif text-3xl italic mb-6">Air Conditioned</h3>
+        <div class="w-16 h-16 rounded-full border border-white flex items-center justify-center hover:bg-[#D48255] hover:border-[#D48255] transition-all">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white py-16 px-6 text-center">
+    <h2 class="font-serif text-2xl italic text-gray-800 mb-2">Visitor <span class="not-italic">Reviews</span></h2>
+    <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">People who stayed in this apartment, have only the best opinions about it.</p>
+  </div>
+
+</section>
+
+<!--room slider-->
+<section class="relative w-full overflow-hidden py-16 bg-white font-sans">
+  <div id="roomSlider" class="relative max-w-7xl mx-auto">
+    <div class="flex transition-transform duration-500 ease-in-out" id="sliderContainer">
+      
+      <div class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 1" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1596436889420-54a434c449c2?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 2" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 3" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 4" class="w-full h-[250px] object-cover rounded shadow-sm">
+      </div>
+
+      <div class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
+        <img src="https://images.unsplash.com/photo-1615529141753-1577717c1975?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 5" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1590490360416-6218174523b4?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 6" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1560067664-8ed95e921d0a?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 7" class="w-full h-[250px] object-cover rounded shadow-sm">
+        <img src="https://images.unsplash.com/photo-1563297008-0150993952a8?q=80&w=1000&auto=format&fit=crop" 
+             alt="Room 8" class="w-full h-[250px] object-cover rounded shadow-sm">
+      </div>
+
+    </div>
+
+    <button id="prevBtn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-white transition-colors">
+      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button id="nextBtn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-white transition-colors">
+      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2" id="paginationDots">
+      <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer hover:bg-gray-600 transition-colors" data-slide="0"></span>
+      <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer hover:bg-gray-600 transition-colors" data-slide="1"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const sliderContainer = document.getElementById('sliderContainer');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('paginationDots');
+  const slides = sliderContainer.children;
+  let currentIndex = 0;
+
+  function updateSlider() {
+    sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Update active dot
+    Array.from(dotsContainer.children).forEach((dot, index) => {
+      dot.classList.remove('bg-[#D48255]');
+      dot.classList.add('bg-gray-400');
+      if (index === currentIndex) {
+        dot.classList.add('bg-[#D48255]');
+      }
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    updateSlider();
+  });
+
+  dotsContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('dot')) {
+      currentIndex = parseInt(e.target.dataset.slide);
+      updateSlider();
+    }
+  });
+
+  // Initialize slider on load
+  updateSlider();
+</script>
+
+
+
+
+<?php include 'footer-one.php'; ?>
