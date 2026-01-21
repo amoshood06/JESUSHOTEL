@@ -103,7 +103,9 @@
         </div>
         <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80" alt="Suite De Lodge" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a herf="standard-rooms.php">
           <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
+          </a>
         </div>
       </div>
 
@@ -125,7 +127,9 @@
         </div>
         <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80" alt="Ambassador Suite" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="executive-rooms.php">
           <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
+          </a>
         </div>
       </div>
 
