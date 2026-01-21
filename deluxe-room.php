@@ -4,7 +4,7 @@
   <div class="max-w-5xl mx-auto flex flex-col items-center">
     
     <h2 class="font-serif text-5xl md:text-7xl text-gray-700 italic mb-6 tracking-tight">
-      Deluxe Rooms
+      Deluxe Room
     </h2>
     
     <div class="w-40 h-[2px] bg-[#D48255] mb-8"></div>

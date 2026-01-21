@@ -71,7 +71,7 @@
           <a href="event-and-conference-halls.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Event and Conference Halls</a>
         </div>
       </div>
-      <a href="#" class="hover:text-[#D48255]">CONTACT US</a>
+      <a href="contacts.php" class="hover:text-[#D48255]">CONTACT US</a>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-6">
@@ -130,7 +130,7 @@
             <a href="event-and-conference-halls.php" class="hover:text-[#D48255]">Event and Conference Halls</a>
           </div>
         </div>
-        <a href="#" class="hover:text-[#D48255] border-b pb-2">CONTACT US</a>
+        <a href="contacts.php" class="hover:text-[#D48255] border-b pb-2">CONTACT US</a>
       </div>
 
       <div class="mt-10 text-xs text-gray-500 flex flex-col gap-2">

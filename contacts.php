@@ -3,7 +3,7 @@
 <section class="w-full bg-white py-16 px-6 text-center font-sans">
   <div class="max-w-4xl mx-auto">
     <h1 class="font-serif text-5xl md:text-6xl text-gray-700 italic mb-2">Contact Us</h1>
-    <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-4 font-bold">PRECIOUS PALM ROYAL HOTEL</p>
+    <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-4 font-bold">AVILLA OKADA HOTEL</p>
     <div class="w-48 h-[2px] bg-[#D48255] mx-auto mb-8"></div>
     <p class="font-serif text-xl md:text-2xl text-gray-800 italic">Come Let's Give You A Royal Treat In Nature's Paradise!</p>
   </div>
@@ -37,15 +37,15 @@
       <div class="space-y-6 text-xs font-bold tracking-wider">
         <p class="flex items-start gap-4">
           <span class="text-[#D48255]">●</span>
-          Lagos-Benin Express Way, P.O. Box 10341, Benin City, Edo State, Nigeria.
+          Okada Town, Edo State, Nigeria.
         </p>
         <p class="flex items-center gap-4">
           <span class="text-[#D48255]">●</span>
-          (+234) <span class="text-cyan-400">08161129744</span>
+          (+234) <span class="text-cyan-400">707 198 4117</span>
         </p>
         <p class="flex items-center gap-4">
           <span class="text-[#D48255]">●</span>
-          info@preciouspalmroyalhotel.com
+          avillaokadahotel@gmail.com
         </p>
       </div>
     </div>
