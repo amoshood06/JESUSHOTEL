@@ -15,7 +15,7 @@
   }
 </style>
 
-<a href="https://wa.me/2348161129744" 
+<a href="https://wa.me/2347071984117" 
    target="_blank" 
    class="whatsapp-bounce fixed bottom-6 right-6 z-[9999] flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-2xl transition-all active:scale-95 group"
    title="Chat with us">
