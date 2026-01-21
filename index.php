@@ -22,7 +22,7 @@
     </p>
 
     <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-12 w-full sm:w-auto">
-      <a href="#" class="group w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-white rounded-full px-8 py-3.5 text-xs md:text-sm font-bold uppercase tracking-widest transition-all hover:bg-white hover:text-black">
+      <a href="bookings.php" class="group w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-white rounded-full px-8 py-3.5 text-xs md:text-sm font-bold uppercase tracking-widest transition-all hover:bg-white hover:text-black">
         Book A Room
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -116,7 +116,9 @@
           </div>
           <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80" alt="Standard Room" class="w-full h-[380px] object-cover transition-all duration-500 group-hover:scale-110">
           <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <a href="deluxe-rooms.php">
             <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
+            </a>
           </div>
         </div>
       </div>

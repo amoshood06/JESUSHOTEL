@@ -78,9 +78,11 @@
       <button class="hidden sm:block text-gray-400 border p-2 rounded">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
       </button>
+      <a href="bookings.php">
       <button class="bg-[#D48255] text-white px-4 sm:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
         Book Online
       </button>
+      </a>
     </div>
   </nav>
 
@@ -105,7 +107,7 @@
       </div>
 
       <div class="flex flex-col gap-6 font-bold text-gray-700">
-        <a href="#" class="hover:text-[#D48255] border-b pb-2">HOME</a>
+        <a href="index.php" class="hover:text-[#D48255] border-b pb-2">HOME</a>
         <a href="#" class="hover:text-[#D48255] border-b pb-2">ABOUT US</a>
                 <div x-data="{ open: false }">
           <button @click="open = !open" class="w-full flex justify-between items-center hover:text-[#D48255] border-b pb-2">
