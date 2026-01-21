@@ -22,8 +22,8 @@
         </div>
 
         <div class="pt-4">
-           <audio controls class="w-full h-10 rounded-full opacity-80 scale-90 origin-left">
-            <source src="#" type="audio/mpeg">
+           <audio controls autoplay loop class="w-full h-10 rounded-full opacity-80 scale-90 origin-left">
+            <source src="asset/gallary/hallelujah-piano-strings-instrumental-future-of-forestry-musicbed.mp3" type="audio/mpeg">
           </audio>
         </div>
       </div>
