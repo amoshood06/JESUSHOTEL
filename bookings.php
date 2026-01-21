@@ -1,4 +1,4 @@
-<?php include "hearer-one.php"; ?>
+<?php include "header-one.php"; ?>
 <section class="w-full bg-white py-16 px-6 text-center font-sans">
   <div class="max-w-4xl mx-auto">
     <h1 class="font-serif text-5xl md:text-6xl text-gray-700 italic mb-2">Book Your Stay</h1>
