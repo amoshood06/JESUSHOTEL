@@ -19,7 +19,7 @@
 <section class="relative w-full min-h-[800px] flex items-center justify-center py-20 px-6 font-sans overflow-hidden">
   
   <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1974&auto=format&fit=crop" 
+    <img src="asset/gallary/IMG-20251129-WA0025.jpg" 
          class="w-full h-full object-cover" 
          alt="Hotel Ambiance">
     <div class="absolute inset-0 bg-black/40"></div>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="z-10 w-full md:w-3/5 h-[500px] overflow-hidden shadow-2xl border-8 border-white">
-      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070&auto=format&fit=crop" 
+      <img src="asset/gallary/IMG-20251129-WA0023.jpg" 
            alt="Standard Room Interior" 
            class="w-full h-full object-cover">
     </div>
@@ -102,7 +102,7 @@
           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 1.9 1.55 3.1 3.48 3.53V21h3v-2.13c2.23-.44 3.5-1.75 3.5-3.64 0-2.25-1.56-3.39-4.3-4.33z"/></svg>
         </div>
         <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">Room Rate</h3>
-        <p class="text-base font-bold text-gray-700">₦ 60,000.00</p>
+        <p class="text-base font-bold text-gray-700">₦16,000.00</p>
       </div>
     </div>
   </div>
@@ -125,7 +125,7 @@
   <div class="relative flex flex-col md:flex-row h-[500px] overflow-hidden">
     
     <div class="relative w-full md:w-1/2 group cursor-pointer overflow-hidden border-r border-white/10">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" 
+      <img src="asset/gallary/IMG-20251129-WA0022.jpg" 
            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
            alt="Beautiful Room View">
       <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
@@ -139,7 +139,7 @@
     </div>
 
     <div class="relative w-full md:w-1/2 group cursor-pointer overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" 
+      <img src="asset/gallary/IMG-20251129-WA0021.jpg" 
            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
            alt="Air Conditioned Room">
       <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
@@ -166,24 +166,24 @@
     <div class="flex transition-transform duration-500 ease-in-out" id="sliderContainer">
       
       <div class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
-        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0021.jpg" 
              alt="Room 1" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1596436889420-54a434c449c2?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0022.jpg" 
              alt="Room 2" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0023.jpg" 
              alt="Room 3" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0022.jpg" 
              alt="Room 4" class="w-full h-[250px] object-cover rounded shadow-sm">
       </div>
 
       <div class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
-        <img src="https://images.unsplash.com/photo-1615529141753-1577717c1975?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0023.jpg" 
              alt="Room 5" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1590490360416-6218174523b4?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0021.jpg" 
              alt="Room 6" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1560067664-8ed95e921d0a?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0023.jpg" 
              alt="Room 7" class="w-full h-[250px] object-cover rounded shadow-sm">
-        <img src="https://images.unsplash.com/photo-1563297008-0150993952a8?q=80&w=1000&auto=format&fit=crop" 
+        <img src="asset/gallary/IMG-20251129-WA0022.jpg" 
              alt="Room 8" class="w-full h-[250px] object-cover rounded shadow-sm">
       </div>
 

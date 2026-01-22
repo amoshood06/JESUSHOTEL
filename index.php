@@ -108,7 +108,7 @@
           </a>
         </div>
         <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
-          N20,000 per Night
+          ₦16,000.00 Per Night
         </div>
       </div>
 
@@ -116,7 +116,7 @@
         <div class="relative group overflow-hidden shadow-lg">
           <div class="absolute top-0 left-0 right-0 bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
             Deluxe Room
-          </div>
+          </div v>
           <img src="asset/gallary/IMG-20251129-WA0017.jpg" alt="Standard Room" class="w-full h-[380px] object-cover transition-all duration-500 group-hover:scale-110">
           <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a href="deluxe-rooms.php">
@@ -124,7 +124,7 @@
             </a>
           </div>
           <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
-          N20,000 per Night
+          ₦24,000.00 Per Night
         </div>
         </div>
       </div>
@@ -140,7 +140,7 @@
           </a>
         </div>
         <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
-          N20,000 per Night
+          ₦20,000.00 Per Night
         </div>
       </div>
 
