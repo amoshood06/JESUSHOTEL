@@ -1,7 +1,7 @@
 <?php include 'header-one.php'; ?>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-black-600 to-black-700 text-white py-20">
+    <section class="bg-gradient-to-br from-black to-black text-white py-20">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="max-w-3xl mx-auto text-center space-y-6">
                 <h1 class="text-4xl md:text-5xl font-bold leading-tight">About AVILLA OKADA HOTEL</h1>
@@ -156,7 +156,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-black-600 text-white">
+    <section class="py-16 bg-black text-white">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center">
@@ -259,7 +259,7 @@
     <!-- CTA Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl p-8 md:p-12 text-center text-white">
+            <div class="bg-gradient-to-br from-black to-black rounded-2xl p-8 md:p-12 text-center text-white">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Experience AVILLA OKADA?</h2>
                 <p class="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">
                     Book your stay today and discover why we're the preferred choice for travelers in Edo State
