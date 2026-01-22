@@ -654,6 +654,14 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL;
+
+--
+-- Add customer information columns to food_orders table
+--
+ALTER TABLE `food_orders` 
+  ADD COLUMN `customer_email` VARCHAR(255) DEFAULT NULL AFTER `room_number`,
+  ADD COLUMN `customer_phone` VARCHAR(20) DEFAULT NULL AFTER `customer_email`;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

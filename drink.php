@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config/database.php';
-include 'header.php';
+include 'header-one.php';
 
 // Get selected category from URL
 $selectedDrinkCategory = isset($_GET['drink_category']) ? $_GET['drink_category'] : 'All';
@@ -78,7 +78,7 @@ try {
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer-one.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

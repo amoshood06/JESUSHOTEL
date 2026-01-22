@@ -4,7 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config/database.php';
-include 'header.php';
+
+include 'header-one.php';
 
 // Handle removing item from cart
 if (isset($_POST['remove_item_id'])) {
@@ -67,72 +68,149 @@ foreach ($cartItems as $item) {
                         <span>Total:</span>
                         <span><?= formatCurrency($cartTotal) ?></span>
                     </div>
-                    <?php if (isLoggedIn()): ?>
-                        <button id="proceedToPaymentBtn" class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg font-medium">
+
+                    <!-- Customer Information Form -->
+                    <form id="customerForm" class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Delivery Information</h3>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                                   placeholder="your.email@example.com">
+                        </div>
+
+                        <div>
+                            <label for="room_number" class="block text-sm font-medium text-gray-700 mb-1">Room Number *</label>
+                            <input type="text" id="room_number" name="room_number" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                                   placeholder="e.g., 101, 205A">
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                                   placeholder="+234 xxx xxx xxxx">
+                        </div>
+
+                        <button type="submit" id="proceedToPaymentBtn"
+                                class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                             Proceed to Payment
                         </button>
-                    <?php else: ?>
-                        <p class="text-red-500 text-center mb-4">Please log in to proceed with payment.</p>
-                        <a href="login.php?redirect=<?= urlencode('cart.php') ?>" class="w-full text-center inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700">
-                            Login to Checkout
-                        </a>
-                    <?php endif; ?>
+                    </form>
                 </div>
             </div>
         <?php endif; ?>
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer-one.php'; ?>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const customerForm = document.getElementById('customerForm');
         const proceedToPaymentBtn = document.getElementById('proceedToPaymentBtn');
-        if (proceedToPaymentBtn) {
-            proceedToPaymentBtn.addEventListener('click', function() {
-                // In a real application, you would make an AJAX call here
-                // to create an order in the database and then initiate Flutterwave payment.
-                // For simplicity, we'll directly initiate Flutterwave from here for now,
-                // passing necessary details.
-                // alert('Proceeding to payment (Flutterwave integration will be here).'); // Removed alert
 
-                // Example of how you might initiate Flutterwave (this will be improved later)
-                // You would typically get tx_ref and total_amount from server-side after order creation
-                const totalAmount = <?= $cartTotal ?>; // Use PHP variable
-                const userEmail = "<?= $_SESSION['email'] ?? 'guest@example.com' ?>";
-                const userName = "<?= $_SESSION['full_name'] ?? 'Guest User' ?>";
+        customerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-                // Dummy transaction reference - replace with a unique one from server after order creation
-                const txRef = 'FLW_FOOD_ORDER_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const roomNumber = document.getElementById('room_number').value.trim();
+            const phone = document.getElementById('phone').value.trim();
 
-                FlutterwaveCheckout({
-                    public_key: 'FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X', // Replace with your actual public key
-                    tx_ref: txRef,
-                    amount: totalAmount,
-                    currency: "NGN",
-                    payment_options: "card,mobilemoney,ussd",
-                    customer: {
-                        email: userEmail,
-                        phone_number: "N/A", // Replace with actual phone if available
-                        name: userName,
-                    },
-                    customizations: {
-                        title: "AVILLA OKADA HOTEL Food Order",
-                        description: "Payment for food and drink order",
-                        logo: "asset/image/logo1.png", // Replace with your logo
-                    },
-                    callback: function (data) {
-                        // Handle payment success or failure
-                        if (data.status === "successful") {
-                            window.location.href = "payment_callback.php?status=successful&tx_ref=" + data.tx_ref + "&transaction_id=" + data.transaction_id + "&total_amount=" + totalAmount;
-                        } else {
-                            window.location.href = "payment_callback.php?status=failed&tx_ref=" + data.tx_ref;
-                        }
-                    },
-                    onclose: function() {
-                        alert("Payment window closed. Your order is pending payment.");
+            // Validate form
+            if (!email || !roomNumber || !phone) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Disable button during processing
+            proceedToPaymentBtn.disabled = true;
+            proceedToPaymentBtn.textContent = 'Processing...';
+
+            // Proceed to payment with form data
+            initiatePayment(email, roomNumber, phone);
+        });
+
+        function initiatePayment(email, roomNumber, phone) {
+            const totalAmount = <?= $cartTotal ?>;
+
+            // First, save the order to database
+            fetch('save_order.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    room_number: roomNumber,
+                    phone: phone,
+                    cart_items: <?= json_encode($cartItems) ?>,
+                    total_amount: totalAmount
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Order saved successfully, proceed to payment
+                    proceedToFlutterwavePayment(email, roomNumber, phone, data.order_id, totalAmount);
+                } else {
+                    alert('Error saving order: ' + data.message);
+                    proceedToPaymentBtn.disabled = false;
+                    proceedToPaymentBtn.textContent = 'Proceed to Payment';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving order. Please try again.');
+                proceedToPaymentBtn.disabled = false;
+                proceedToPaymentBtn.textContent = 'Proceed to Payment';
+            });
+        }
+
+        function proceedToFlutterwavePayment(email, roomNumber, phone, orderId, totalAmount) {
+            // Create transaction reference
+            const txRef = 'FLW_FOOD_ORDER_' + orderId + '_' + Math.random().toString(36).substring(2, 8);
+
+            FlutterwaveCheckout({
+                public_key: 'FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X', // Replace with your actual public key
+                tx_ref: txRef,
+                amount: totalAmount,
+                currency: "NGN",
+                payment_options: "card,mobilemoney,ussd",
+                customer: {
+                    email: email,
+                    phone_number: phone,
+                    name: `Room ${roomNumber}`,
+                },
+                customizations: {
+                    title: "AVILLA OKADA HOTEL Food Order",
+                    description: `Payment for food order - Room ${roomNumber} (Order #${orderId})`,
+                    logo: "asset/image/logo1.png",
+                },
+                callback: function (data) {
+                    // Handle payment success or failure
+                    if (data.status === "successful") {
+                        window.location.href = `payment_callback.php?status=successful&tx_ref=${data.tx_ref}&transaction_id=${data.transaction_id}&total_amount=${totalAmount}&order_id=${orderId}`;
+                    } else {
+                        window.location.href = "payment_callback.php?status=failed&tx_ref=" + data.tx_ref;
                     }
-                });
+                },
+                onclose: function() {
+                    // Re-enable button if payment window is closed
+                    proceedToPaymentBtn.disabled = false;
+                    proceedToPaymentBtn.textContent = 'Proceed to Payment';
+                    alert("Payment window closed. Your order is pending payment.");
+                }
             });
         }
     });

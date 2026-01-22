@@ -9,7 +9,8 @@ include 'header.php';
 $status = sanitize($_GET['status'] ?? '');
 $tx_ref = sanitize($_GET['tx_ref'] ?? '');
 $transaction_id = sanitize($_GET['transaction_id'] ?? '');
-$totalAmount = filter_input(INPUT_GET, 'total_amount', FILTER_VALIDATE_FLOAT); // Passed from cart.php for now
+$totalAmount = filter_input(INPUT_GET, 'total_amount', FILTER_VALIDATE_FLOAT);
+$orderId = filter_input(INPUT_GET, 'order_id', FILTER_VALIDATE_INT);
 
 // Placeholder for Flutterwave Secret Key - In a real app, define this securely (e.g., config file, environment variable)
 define('FLUTTERWAVE_SECRET_KEY', 'FLWSECK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X');
@@ -46,76 +47,54 @@ if ($status === 'successful' && $tx_ref && $transaction_id) {
 
         // Important: Compare verifiedAmount with the expected amount from your system ($totalAmount)
         // Also check if the currency matches, and if the transaction_id or tx_ref hasn't been used before.
-        if ($verifiedAmount >= $totalAmount && $verifiedCurrency === 'NGN') { // Assuming NGN
+        if ($verifiedAmount >= $totalAmount && $verifiedCurrency === 'NGN' && $orderId) {
             // Payment is verified and successful
             $messageType = 'success';
-            $message = 'Payment successful! Your order has been placed.';
+            $message = 'Payment successful! Your order has been confirmed.';
 
-            // Now, save the order to the database
             try {
                 $pdo->beginTransaction();
 
-                $userId = $_SESSION['user_id'] ?? null; // Assume user is logged in
-                if (!$userId) {
-                    // Handle case where user is not logged in (e.g., redirect to login or show error)
-                    $message = 'Payment successful, but you are not logged in. Please log in to view your order.';
-                    $pdo->rollBack();
-                    // Consider storing the transaction details and linking it to a user later
-                } else {
-                    $orderCode = 'ORD' . strtoupper(uniqid());
-                    $totalOrderAmount = $totalAmount; // Use the verified amount for the order
+                // Update the existing order status and payment status
+                $stmt = $pdo->prepare("
+                    UPDATE food_orders
+                    SET order_status = 'confirmed', payment_status = 'paid'
+                    WHERE order_id = ? AND payment_status = 'unpaid'
+                ");
+                $stmt->execute([$orderId]);
 
-                    // Insert into food_orders
-                    $stmt = $pdo->prepare("INSERT INTO food_orders (order_code, user_id, order_date, delivery_type, order_status, total_amount, payment_status)
-                                           VALUES (:order_code, :user_id, NOW(), 'room-service', 'pending', :total_amount, 'paid')");
-                    $stmt->execute([
-                        ':order_code' => $orderCode,
-                        ':user_id' => $userId,
-                        ':total_amount' => $totalOrderAmount
-                    ]);
-                    $orderId = $pdo->lastInsertId();
+                // Insert payment record
+                $stmt = $pdo->prepare("
+                    INSERT INTO payments (
+                        order_id, payment_amount, payment_method, payment_gateway,
+                        payment_status, transaction_id, reference_number,
+                        flutterwave_tx_ref, flutterwave_transaction_id, payment_date
+                    ) VALUES (?, ?, 'card', 'flutterwave', 'completed', ?, ?, ?, ?, NOW())
+                ");
+                $stmt->execute([
+                    $orderId,
+                    $verifiedAmount,
+                    $transaction_id,
+                    $responseData['data']['flw_ref'] ?? $tx_ref,
+                    $tx_ref,
+                    $transaction_id
+                ]);
 
-                    // Insert into order_items
-                    foreach ($_SESSION['cart'] as $itemId => $item) {
-                        $stmt = $pdo->prepare("INSERT INTO order_items (order_id, menu_item_id, quantity, unit_price, subtotal)
-                                               VALUES (:order_id, :menu_item_id, :quantity, :unit_price, :subtotal)");
-                        $stmt->execute([
-                            ':order_id' => $orderId,
-                            ':menu_item_id' => $item['item_id'],
-                            ':quantity' => $item['quantity'],
-                            ':unit_price' => $item['price'],
-                            ':subtotal' => $item['price'] * $item['quantity']
-                        ]);
-                    }
+                $pdo->commit();
 
-                    // Insert into payments
-                    $stmt = $pdo->prepare("INSERT INTO payments (order_id, user_id, payment_amount, payment_method, payment_gateway, payment_status, transaction_id, reference_number, flutterwave_tx_ref, flutterwave_transaction_id)
-                                           VALUES (:order_id, :user_id, :payment_amount, :payment_method, :payment_gateway, :payment_status, :transaction_id, :reference_number, :flutterwave_tx_ref, :flutterwave_transaction_id)");
-                    $stmt->execute([
-                        ':order_id' => $orderId,
-                        ':user_id' => $userId,
-                        ':payment_amount' => $verifiedAmount,
-                        ':payment_method' => 'card', // Or derive from Flutterwave response
-                        ':payment_gateway' => 'flutterwave',
-                        ':payment_status' => 'completed',
-                        ':transaction_id' => $transaction_id,
-                        ':reference_number' => $responseData['data']['flw_ref'] ?? $tx_ref, // Use flw_ref if available
-                        ':flutterwave_tx_ref' => $tx_ref,
-                        ':flutterwave_transaction_id' => $transaction_id
-                    ]);
+                // Clear the cart session after successful payment
+                unset($_SESSION['cart']);
 
-                    $pdo->commit();
-                    unset($_SESSION['cart']); // Clear the cart after successful order
-                }
+                $message = 'Payment successful! Your order #' . $orderId . ' has been confirmed and is being prepared.';
 
             } catch (PDOException $e) {
                 $pdo->rollBack();
                 error_log("Database error during payment callback: " . $e->getMessage());
-                $message = 'Payment was successful, but there was an error saving your order. Please contact support.';
+                $message = 'Payment was successful, but there was an error updating your order. Please contact support with order ID: ' . $orderId;
                 $messageType = 'error';
             }
         } else {
-            $message = 'Payment verification failed: Amount or currency mismatch, or duplicate transaction.';
+            $message = 'Payment verification failed: Amount or currency mismatch, or invalid order.';
         }
     } else {
         $message = 'Payment verification failed with Flutterwave API.';

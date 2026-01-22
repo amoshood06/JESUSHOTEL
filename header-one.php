@@ -116,9 +116,22 @@ try {
     </div>
 
     <div class="flex items-center gap-2 sm:gap-6">
-      <button class="hidden sm:block text-gray-400 border p-2 rounded">
-        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-      </button>
+      <a href="cart.php" class="hidden sm:block relative text-gray-400 border p-2 rounded hover:text-gray-600 transition-colors">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        <?php
+        $cartCount = 0;
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $cartCount += $item['quantity'] ?? 0;
+            }
+        }
+        if ($cartCount > 0):
+        ?>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+            <?= $cartCount > 99 ? '99+' : $cartCount ?>
+        </span>
+        <?php endif; ?>
+      </a>
       <a href="bookings.php">
       <button class="bg-[#D48255] text-white px-4 sm:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
         Book Online
@@ -204,6 +217,16 @@ try {
           </div>
         </div>
         <a href="contacts.php" class="hover:text-[#D48255] border-b pb-2">CONTACT US</a>
+        <a href="cart.php" class="flex items-center gap-2 hover:text-[#D48255] border-b pb-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span>Cart
+            <?php if ($cartCount > 0): ?>
+              (<?= $cartCount > 99 ? '99+' : $cartCount ?>)
+            <?php endif; ?>
+          </span>
+        </a>
       </div>
 
       <div class="mt-10 text-xs text-gray-500 flex flex-col gap-2">
