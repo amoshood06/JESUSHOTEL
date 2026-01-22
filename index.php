@@ -339,7 +339,7 @@
       </h2>
       
       <div class="group">
-        <a href="#" class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-[0.2em] mb-2 hover:text-[#D48255] transition-colors">
+        <a href="event-and-conference-halls.php" class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-[0.2em] mb-2 hover:text-[#D48255] transition-colors">
           Upcoming Events
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
@@ -381,7 +381,7 @@
         Spa / Wellness Center
       </h2>
       
-      <a href="#" class="group flex items-center gap-3 border-2 border-white rounded-full px-8 py-3 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all">
+      <a href="event-and-conference-halls.php" class="group flex items-center gap-3 border-2 border-white rounded-full px-8 py-3 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all">
         See Our Wellness Center
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7-7" />
