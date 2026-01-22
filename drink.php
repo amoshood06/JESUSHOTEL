@@ -41,7 +41,7 @@ try {
         </div>
         
         <div class="text-center mb-8">
-            <a href="index-two.php#drinks" class="text-teal-600 hover:text-teal-800 font-medium">← Back to Drink Categories</a>
+            <a href="index.php" class="text-teal-600 hover:text-teal-800 font-medium">← Back to Drink Categories</a>
         </div>
 
         <?php if (empty($drinks)): ?>
@@ -65,7 +65,7 @@ try {
                                     <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">
                                     <input type="hidden" name="item_price" value="<?= $item['price'] ?>">
                                     <input type="hidden" name="quantity" value="1">
-                                    <button type="submit" class="bg-teal-600 text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                                    <button type="submit" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                         Add to Cart
                                     </button>
                                 </form>

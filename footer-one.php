@@ -114,4 +114,5 @@
 </div>
 
 </body>
+    <script src="asset/js/cart-ajax.js"></script>
 </html>

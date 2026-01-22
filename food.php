@@ -85,7 +85,7 @@ try {
                 </div>
             </div>
             <div class="mt-6 flex justify-end">
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-black hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
                     Apply Filters
                 </button>
             </div>
@@ -113,7 +113,7 @@ try {
                                         <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">
                                         <input type="hidden" name="item_price" value="<?= $item['price'] ?>">
                                         <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="bg-teal-600 text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                                        <button type="submit" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                             Add to Cart
                                         </button>
                                     </form>
