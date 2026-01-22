@@ -206,18 +206,19 @@
 <!-- Menu Modal -->
 <div x-data="{ menuModal: false }" x-show="menuModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
   <div @click.away="menuModal = false" class="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-2xl">
-    <!-- Modal Header -->
-    <div class="flex justify-between items-center p-6 border-b border-gray-200">
-      <h2 class="text-2xl font-serif italic text-[#D48255]">Our Menu</h2>
-      <button @click="menuModal = false" class="text-gray-400 hover:text-gray-600 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
+    <!-- Close button in top right corner -->
+    <button @click="menuModal = false" class="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-colors bg-white rounded-full p-2 shadow-lg">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
 
     <!-- Modal Content -->
     <div class="p-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-serif italic text-[#D48255]">Our Menu</h2>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Food Section -->
         <div>
