@@ -64,7 +64,7 @@ try {
 
     <div class="hidden lg:flex items-center gap-8 font-bold text-[#4A4A4A] text-sm tracking-wide">
       <a href="index.php" class="hover:text-[#D48255]">HOME</a>
-      <a href="#" class="text-[#D48255]">ABOUT US</a>
+      <a href="about.php" class="text-[#D48255]">ABOUT US</a>
       <div class="group relative py-2 cursor-pointer">
         <div class="flex items-center gap-1 hover:text-[#D48255]">
           <span>ROOMS AND SUITES</span>
