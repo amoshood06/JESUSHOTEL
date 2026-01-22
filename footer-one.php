@@ -61,7 +61,7 @@
         <h4 class="text-lg font-bold uppercase tracking-widest">Links</h4>
         <ul class="space-y-4 text-sm text-gray-400">
           <li><a href="index.php" class="hover:text-[#D48255] transition-colors flex items-center gap-2"><span class="text-[#D48255]">&rsaquo;</span> HOME</a></li>
-          <li><a href="#" class="hover:text-[#D48255] transition-colors flex items-center gap-2"><span class="text-[#D48255]">&rsaquo;</span> ABOUT US</a></li>
+          <li><a href="about.php" class="hover:text-[#D48255] transition-colors flex items-center gap-2"><span class="text-[#D48255]">&rsaquo;</span> ABOUT US</a></li>
           <!-- <li><a href="#" class="hover:text-[#D48255] transition-colors flex items-center gap-2"><span class="text-[#D48255]">&rsaquo;</span> POOL AND WELLNESS CENTER</a></li> -->
           <li><a href="contacts.php" class="hover:text-[#D48255] transition-colors flex items-center gap-2"><span class="text-[#D48255]">&rsaquo;</span> CONTACT US</a></li>
         </ul>
