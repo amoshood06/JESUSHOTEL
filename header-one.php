@@ -11,6 +11,23 @@
     <!--headers-->
  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+<?php
+require_once 'config/database.php';
+
+try {
+    // Fetch food categories
+    $foodCategoriesStmt = $pdo->query("SELECT DISTINCT category FROM food_menu WHERE category != 'Drinks' ORDER BY category");
+    $foodCategories = $foodCategoriesStmt->fetchAll(PDO::FETCH_COLUMN);
+    
+    // Fetch drink categories
+    $drinkCategoriesStmt = $pdo->query("SELECT DISTINCT drink_category FROM food_menu WHERE drink_category IS NOT NULL ORDER BY drink_category");
+    $drinkCategories = $drinkCategoriesStmt->fetchAll(PDO::FETCH_COLUMN);
+} catch (PDOException $e) {
+    $foodCategories = [];
+    $drinkCategories = [];
+}
+?>
+
 <header class="sticky top-0 z-50 w-full font-sans shadow-md" x-data="{ mobileMenuOpen: false }">
   
   <div class="bg-[#E6B49A] text-[#1E293B] py-2 px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center text-[10px] sm:text-xs md:text-sm gap-2">
@@ -57,6 +74,30 @@
           <a href="standard-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Standard Room</a>
           <a href="deluxe-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Deluxe Room</a>
           <a href="executive-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Executive Suite</a>
+        </div>
+      </div>
+      <div class="group relative py-2 cursor-pointer">
+        <div class="flex items-center gap-1 hover:text-[#D48255]">
+          <span>RESTAURANT</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" /></svg>
+        </div>
+        <div class="absolute top-full left-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
+          <div class="group relative">
+            <span class="block px-4 py-3 hover:bg-gray-50 text-xs cursor-pointer">Food</span>
+            <div class="absolute left-full top-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
+              <?php foreach ($foodCategories as $category): ?>
+                <a href="food.php?category=<?= urlencode($category) ?>" class="block px-4 py-3 hover:bg-gray-50 text-xs"><?= htmlspecialchars($category) ?></a>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="group relative">
+            <span class="block px-4 py-3 hover:bg-gray-50 text-xs cursor-pointer">Drink</span>
+            <div class="absolute left-full top-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
+              <?php foreach ($drinkCategories as $category): ?>
+                <a href="drink.php?drink_category=<?= urlencode($category) ?>" class="block px-4 py-3 hover:bg-gray-50 text-xs"><?= htmlspecialchars($category) ?></a>
+              <?php endforeach; ?>
+            </div>
+          </div>
         </div>
       </div>
       <div class="group relative py-2 cursor-pointer">
@@ -118,6 +159,36 @@
             <a href="standard-rooms.php" class="hover:text-[#D48255]">Standard Room</a>
             <a href="deluxe-rooms.php" class="hover:text-[#D48255]">Deluxe Room</a>
             <a href="executive-rooms.php" class="hover:text-[#D48255]">Executive Suite</a>
+          </div>
+        </div>
+        <div x-data="{ open: false, foodOpen: false, drinkOpen: false }">
+          <button @click="open = !open" class="w-full flex justify-between items-center hover:text-[#D48255] border-b pb-2">
+            <span>RESTAURANT</span>
+            <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div x-show="open" x-transition class="pl-4 pt-2 flex flex-col gap-4 text-sm text-gray-600">
+            <div>
+              <button @click="foodOpen = !foodOpen" class="w-full flex justify-between items-center hover:text-[#D48255]">
+                <span>Food</span>
+                <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': foodOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div x-show="foodOpen" x-transition class="pl-4 pt-2 flex flex-col gap-2 text-xs text-gray-500">
+                <?php foreach ($foodCategories as $category): ?>
+                  <a href="food.php?category=<?= urlencode($category) ?>" class="hover:text-[#D48255]"><?= htmlspecialchars($category) ?></a>
+                <?php endforeach; ?>
+              </div>
+            </div>
+            <div>
+              <button @click="drinkOpen = !drinkOpen" class="w-full flex justify-between items-center hover:text-[#D48255]">
+                <span>Drink</span>
+                <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': drinkOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div x-show="drinkOpen" x-transition class="pl-4 pt-2 flex flex-col gap-2 text-xs text-gray-500">
+                <?php foreach ($drinkCategories as $category): ?>
+                  <a href="drink.php?drink_category=<?= urlencode($category) ?>" class="hover:text-[#D48255]"><?= htmlspecialchars($category) ?></a>
+                <?php endforeach; ?>
+              </div>
+            </div>
           </div>
         </div>
                 <div x-data="{ open: false }">

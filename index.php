@@ -3,7 +3,7 @@
   <section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden font-sans">
   
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center bg-no-repeat"></div>
+    <div class="absolute inset-0 bg-[url('./asset/gallary/IMG-20251129-WA0045.jpg')] bg-cover bg-center bg-no-repeat"></div>
     <div class="absolute inset-0 bg-black/50"></div>
   </div>
 
@@ -41,7 +41,7 @@
 
     <div class="max-w-2xl px-4">
       <p class="text-xs sm:text-sm md:text-base italic leading-relaxed text-gray-200">
-        <span class="font-bold underline decoration-1 underline-offset-4">Precious palm royal hotel</span> is part of a collection of the finest independent luxury hotels in the Edo region. Learn more about our offering!
+        <span class="font-bold underline decoration-1 underline-offset-4">Avilla Okada Hotel</span> is part of a collection of the finest independent luxury hotels in the Edo region. Learn more about our offering!
       </p>
     </div>
   </div>
@@ -101,11 +101,14 @@
         <div class="absolute top-0 left-0 right-0 bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
           Standard Room
         </div>
-        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80" alt="Suite De Lodge" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
+        <img src="asset/gallary/IMG-20251129-WA0019.jpg" alt="Suite De Lodge" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <a herf="standard-rooms.php">
           <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
           </a>
+        </div>
+        <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
+          N20,000 per Night
         </div>
       </div>
 
@@ -114,12 +117,15 @@
           <div class="absolute top-0 left-0 right-0 bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
             Deluxe Room
           </div>
-          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80" alt="Standard Room" class="w-full h-[380px] object-cover transition-all duration-500 group-hover:scale-110">
+          <img src="asset/gallary/IMG-20251129-WA0017.jpg" alt="Standard Room" class="w-full h-[380px] object-cover transition-all duration-500 group-hover:scale-110">
           <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a href="deluxe-rooms.php">
             <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
             </a>
           </div>
+          <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
+          N20,000 per Night
+        </div>
         </div>
       </div>
 
@@ -127,11 +133,14 @@
         <div class="absolute top-0 left-0 right-0 bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
           Executive Suite
         </div>
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80" alt="Ambassador Suite" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
+        <img src="asset/gallary/IMG-20251129-WA0023.jpg" alt="Ambassador Suite" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <a href="executive-rooms.php">
           <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
           </a>
+        </div>
+        <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
+          N20,000 per Night
         </div>
       </div>
 

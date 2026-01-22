@@ -81,10 +81,10 @@
         <div class="grid grid-cols-3 gap-2">
           <img src="asset/gallary/IMG-20251129-WA0022.jpg" alt="Gallery 1" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
           <img src="asset/gallary/IMG-20251129-WA0020.jpg" alt="Gallery 2" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
-          <img src="https://via.placeholder.com/80" alt="Gallery 3" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
-          <img src="https://via.placeholder.com/80" alt="Gallery 4" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
-          <img src="https://via.placeholder.com/80" alt="Gallery 5" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
-          <img src="https://via.placeholder.com/80" alt="Gallery 6" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
+          <img src="asset/gallary/IMG-20251129-WA0027.jpg" alt="Gallery 3" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
+          <img src="asset/gallary/IMG-20251129-WA0018.jpg" alt="Gallery 4" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
+          <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Gallery 5" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
+          <img src="asset/gallary/IMG-20251129-WA0043.jpg" alt="Gallery 6" class="w-full h-20 object-cover rounded shadow-sm hover:opacity-75 transition-opacity">
         </div>
       </div>
 
