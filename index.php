@@ -191,7 +191,7 @@
           All that matters to us, is that our guests feel comfortable in our bar. We want our customers to enjoy their drinks and their conversations, we are happy to invite everybody to relax in our comfy lounge sofas, with great meals and to end the evening with a signature drink.
         </p>
         
-        <button class="group flex items-center gap-3 border-2 border-white rounded-full px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+        <button @click="menuModal = true" class="group flex items-center gap-3 border-2 border-white rounded-full px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all cursor-pointer">
           Our Menu
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
@@ -202,6 +202,82 @@
     </div>
   </div>
 </section>
+
+<!-- Menu Modal -->
+<div x-data="{ menuModal: false }" x-show="menuModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+  <div @click.away="menuModal = false" class="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-2xl">
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center p-6 border-b border-gray-200">
+      <h2 class="text-2xl font-serif italic text-[#D48255]">Our Menu</h2>
+      <button @click="menuModal = false" class="text-gray-400 hover:text-gray-600 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Food Section -->
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-[#D48255]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Food Categories
+          </h3>
+          <div class="space-y-2">
+            <?php foreach ($foodCategories as $category): ?>
+              <a href="food.php?category=<?= urlencode($category) ?>" 
+                 class="block p-3 rounded-lg border border-gray-200 hover:border-[#D48255] hover:bg-[#D48255]/5 transition-all duration-200 group">
+                <div class="flex items-center justify-between">
+                  <span class="font-medium text-gray-700 group-hover:text-[#D48255]"><?= htmlspecialchars($category) ?></span>
+                  <svg class="w-4 h-4 text-gray-400 group-hover:text-[#D48255] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <!-- Drink Section -->
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-[#D48255]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+            Drink Categories
+          </h3>
+          <div class="space-y-2">
+            <?php foreach ($drinkCategories as $category): ?>
+              <a href="drink.php?drink_category=<?= urlencode($category) ?>" 
+                 class="block p-3 rounded-lg border border-gray-200 hover:border-[#D48255] hover:bg-[#D48255]/5 transition-all duration-200 group">
+                <div class="flex items-center justify-between">
+                  <span class="font-medium text-gray-700 group-hover:text-[#D48255]"><?= htmlspecialchars($category) ?></span>
+                  <svg class="w-4 h-4 text-gray-400 group-hover:text-[#D48255] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All Menu Button -->
+      <div class="mt-8 text-center">
+        <a href="restaurant-and-bar.php" class="inline-flex items-center gap-2 bg-[#D48255] text-white px-6 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-[#B86A3A] transition-colors">
+          View Full Menu
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- services section-->
 <section class="bg-white py-20 px-6 sm:px-12 lg:px-24 max-w-7xl mx-auto">
