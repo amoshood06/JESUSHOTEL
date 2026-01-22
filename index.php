@@ -191,7 +191,7 @@
           All that matters to us, is that our guests feel comfortable in our bar. We want our customers to enjoy their drinks and their conversations, we are happy to invite everybody to relax in our comfy lounge sofas, with great meals and to end the evening with a signature drink.
         </p>
         
-        <button @click="menuModal = true" class="group flex items-center gap-3 border-2 border-white rounded-full px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all cursor-pointer">
+        <button id="menuModalBtn" class="group flex items-center gap-3 border-2 border-white rounded-full px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all cursor-pointer">
           Our Menu
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
@@ -203,11 +203,17 @@
   </div>
 </section>
 
+
+
 <!-- Menu Modal -->
-<div x-data="{ menuModal: false }" x-show="menuModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-  <div @click.away="menuModal = false" class="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-2xl">
+<div id="menuModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+  <div id="menuModalContent" class="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-2xl">
     <!-- Close button in top right corner -->
-    <button @click="menuModal = false" class="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-colors bg-white rounded-full p-2 shadow-lg">
+    <button id="closeMenuModal" class="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-colors bg-white rounded-full p-2 shadow-lg">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -230,7 +236,7 @@
           </h3>
           <div class="space-y-2">
             <?php foreach ($foodCategories as $category): ?>
-              <a href="food.php?category=<?= urlencode($category) ?>" 
+              <a href="food.php?category=<?= urlencode($category) ?>"
                  class="block p-3 rounded-lg border border-gray-200 hover:border-[#D48255] hover:bg-[#D48255]/5 transition-all duration-200 group">
                 <div class="flex items-center justify-between">
                   <span class="font-medium text-gray-700 group-hover:text-[#D48255]"><?= htmlspecialchars($category) ?></span>
@@ -253,7 +259,7 @@
           </h3>
           <div class="space-y-2">
             <?php foreach ($drinkCategories as $category): ?>
-              <a href="drink.php?drink_category=<?= urlencode($category) ?>" 
+              <a href="drink.php?drink_category=<?= urlencode($category) ?>"
                  class="block p-3 rounded-lg border border-gray-200 hover:border-[#D48255] hover:bg-[#D48255]/5 transition-all duration-200 group">
                 <div class="flex items-center justify-between">
                   <span class="font-medium text-gray-700 group-hover:text-[#D48255]"><?= htmlspecialchars($category) ?></span>
@@ -441,4 +447,42 @@
   </div>
 </section>
 <!--footer section-->
+<script>
+// Menu Modal JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const menuModalBtn = document.getElementById('menuModalBtn');
+    const menuModal = document.getElementById('menuModal');
+    const closeMenuModal = document.getElementById('closeMenuModal');
+    const menuModalContent = document.getElementById('menuModalContent');
+
+    // Open modal
+    menuModalBtn.addEventListener('click', function() {
+        menuModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    // Close modal functions
+    function closeModal() {
+        menuModal.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Close button click
+    closeMenuModal.addEventListener('click', closeModal);
+
+    // Click outside modal content to close
+    menuModal.addEventListener('click', function(e) {
+        if (e.target === menuModal) {
+            closeModal();
+        }
+    });
+
+    // ESC key to close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !menuModal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+});
+</script>
 <?php include 'footer-one.php';?>
