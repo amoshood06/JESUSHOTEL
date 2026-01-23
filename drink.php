@@ -41,7 +41,7 @@ try {
         </div>
         
         <div class="text-center mb-8">
-            <a href="index.php" class="text-teal-600 hover:text-teal-800 font-medium">← Back to Drink Categories</a>
+            <a href="index.php" class="text-black hover:text-teal-800 font-medium">← Back to Drink Categories</a>
         </div>
 
         <?php if (empty($drinks)): ?>
@@ -59,7 +59,7 @@ try {
                             <h3 class="text-xl font-semibold text-gray-800 mb-2"><?= htmlspecialchars($item['item_name']) ?></h3>
                             <p class="text-gray-600 text-sm mb-4 h-12 overflow-hidden"><?= htmlspecialchars($item['description'] ?? 'No description available.') ?></p>
                             <div class="flex items-center justify-between">
-                                <span class="text-2xl font-bold text-teal-600">N<?= number_format($item['price'], 2) ?></span>
+                                <span class="text-2xl font-bold text-black">N<?= number_format($item['price'], 2) ?></span>
                                 <form class="add-to-cart-form">
                                     <input type="hidden" name="item_id" value="<?= $item['menu_item_id'] ?>">
                                     <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">

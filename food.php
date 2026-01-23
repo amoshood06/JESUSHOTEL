@@ -85,7 +85,7 @@ try {
                 </div>
             </div>
             <div class="mt-6 flex justify-end">
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-black hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-black hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
                     Apply Filters
                 </button>
             </div>
@@ -107,13 +107,13 @@ try {
                                 <h3 class="text-xl font-semibold text-gray-800 mb-2"><?= htmlspecialchars($item['item_name']) ?></h3>
                                 <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($item['description'] ?? 'No description available.') ?></p>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-2xl font-bold text-teal-600"><?= formatCurrency($item['price']) ?></span>
+                                    <span class="text-2xl font-bold text-black"><?= formatCurrency($item['price']) ?></span>
                                     <form class="add-to-cart-form">
                                         <input type="hidden" name="item_id" value="<?= $item['menu_item_id'] ?>">
                                         <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">
                                         <input type="hidden" name="item_price" value="<?= $item['price'] ?>">
                                         <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                                        <button type="submit" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                                             Add to Cart
                                         </button>
                                     </form>

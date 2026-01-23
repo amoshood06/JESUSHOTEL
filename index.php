@@ -29,7 +29,7 @@
         </svg>
       </a>
 
-      <a href="#" class="group w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-white rounded-full px-8 py-3.5 text-xs md:text-sm font-bold uppercase tracking-widest transition-all hover:bg-white hover:text-black">
+      <a href="about.php" class="group w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-white rounded-full px-8 py-3.5 text-xs md:text-sm font-bold uppercase tracking-widest transition-all hover:bg-white hover:text-black">
         More About Us
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />

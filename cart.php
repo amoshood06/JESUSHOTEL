@@ -32,7 +32,7 @@ foreach ($cartItems as $item) {
         <?php if (empty($cartItems)): ?>
             <div class="bg-white p-6 rounded-lg shadow-lg text-center">
                 <p class="text-gray-600 text-lg mb-4">Your cart is empty.</p>
-                <a href="food.php" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700">
+                <a href="food.php" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-teal-700">
                     Continue Shopping
                 </a>
             </div>
@@ -95,7 +95,7 @@ foreach ($cartItems as $item) {
                         </div>
 
                         <button type="submit" id="proceedToPaymentBtn"
-                                class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="w-full bg-black text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                             Proceed to Payment
                         </button>
                     </form>
