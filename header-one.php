@@ -162,7 +162,7 @@ try {
 
       <div class="flex flex-col gap-6 font-bold text-gray-700">
         <a href="index.php" class="hover:text-[#D48255] border-b pb-2">HOME</a>
-        <a href="#" class="hover:text-[#D48255] border-b pb-2">ABOUT US</a>
+        <a href="about.php" class="hover:text-[#D48255] border-b pb-2">ABOUT US</a>
                 <div x-data="{ open: false }">
           <button @click="open = !open" class="w-full flex justify-between items-center hover:text-[#D48255] border-b pb-2">
             <span>ROOMS AND SUITES</span>
