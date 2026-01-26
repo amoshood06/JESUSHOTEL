@@ -68,7 +68,7 @@
       </div>
 
       <div class="space-y-6">
-        <h4 class="text-lg font-bold uppercase tracking-widest">Rooms and Suites</h4>
+        <h4 class="text-lg font-bold uppercase tracking-widest">Rooms</h4>
         <ul class="space-y-4 text-sm text-gray-400">
           <li><a href="standard-rooms.php" class="hover:text-[#D48255] transition-colors">Standard Room</a></li>
           <li><a href="deluxe-rooms.php" class="hover:text-[#D48255] transition-colors">Deluxe Room</a></li>
