@@ -103,9 +103,9 @@
         </div>
         <img src="asset/gallary/IMG-20251129-WA0019.jpg" alt="Suite De Lodge" class="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <a herf="standard-rooms.php">
-          <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
-          </a>
+          <a href="standard-rooms.php">
+            <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">View Details</button>
+            </a>
         </div>
         <div class="bg-black/40 text-white py-2 px-4 text-center italic font-serif z-10">
           ₦16,000.00 Per Night
