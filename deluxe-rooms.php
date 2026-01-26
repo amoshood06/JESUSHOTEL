@@ -28,7 +28,7 @@
   <div class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center">
     
     <div class="z-20 w-full md:w-2/5 bg-[#f2f2f2]/95 backdrop-blur-sm p-10 md:p-16 shadow-2xl md:-mr-20">
-      <h2 class="font-serif text-4xl text-gray-800 italic mb-1">The Standard</h2>
+      <h2 class="font-serif text-4xl text-gray-800 italic mb-1">The Deluxe</h2>
       <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-10">R O O M</p>
       
       <ul class="space-y-0 text-[11px] font-bold uppercase tracking-widest text-gray-600">
@@ -57,6 +57,11 @@
       <div class="mt-10 flex items-center gap-2 group cursor-pointer">
         <span class="text-[10px] font-bold tracking-widest text-gray-400">GALLERY</span>
         <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z"/></svg>
+      </div>
+      <div class="mt-10 flex items-center gap-2 group cursor-pointer">
+        <a href="bookings.php">
+            <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">Book Now</button>
+          </a>
       </div>
     </div>
 
