@@ -58,7 +58,15 @@
         <span class="text-[10px] font-bold tracking-widest text-gray-400">GALLERY</span>
         <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z"/></svg>
       </div>
+
+      <div class="mt-10 flex items-center gap-2 group cursor-pointer">
+        <a href="bookings.php">
+            <button class="bg-[#D48255] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#D48255] transition-colors">Book Now</button>
+          </a>
+      </div>
     </div>
+
+    
 
     <div class="z-10 w-full md:w-3/5 h-[500px] overflow-hidden shadow-2xl border-8 border-white">
       <img src="asset/gallary/IMG-20251129-WA0023.jpg" 
