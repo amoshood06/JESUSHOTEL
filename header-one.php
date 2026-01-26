@@ -76,7 +76,8 @@ try {
           <a href="executive-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Executive Suite</a>
         </div>
       </div>
-  <div x-data="{ open: false, foodOpen: false, drinkOpen: false }">
+      <!--desktop restaurant menu-->
+  <div class="group relative py-2 cursor-pointer" x-data="{ open: false, foodOpen: false, drinkOpen: false }">
           <button @click="open = !open" class="w-full flex justify-between items-center hover:text-[#D48255] border-b pb-2">
             <span>RESTAURANT</span>
             <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
