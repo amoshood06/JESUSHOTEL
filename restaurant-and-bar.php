@@ -1,4 +1,17 @@
-<?php include 'header-one.php'; ?>
+<?php 
+include 'header-one.php'; 
+include 'config/database.php';
+
+// Fetch 4 random food items with images
+try {
+    $stmt = $pdo->prepare("SELECT image_url, item_name FROM food_menu WHERE image_url IS NOT NULL AND availability = 1 ORDER BY RAND() LIMIT 4");
+    $stmt->execute();
+    $randomFoods = $stmt->fetchAll();
+} catch(PDOException $e) {
+    // Fallback to default images if database error
+    $randomFoods = [];
+}
+?>
 <!--title section-->
 <section class="bg-white py-16 px-6 text-center">
   <div class="max-w-4xl mx-auto flex flex-col items-center">
@@ -71,25 +84,91 @@
     </div>
 
     <div class="grid grid-cols-2 grid-rows-2 h-[600px]">
+      <?php
+      $fallbackImages = [
+          ["url" => "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop", "alt" => "Salad dish"],
+          ["url" => "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop", "alt" => "Meat dish"],
+          ["url" => "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop", "alt" => "Wine and appetizer"],
+          ["url" => "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=1980&auto=format&fit=crop", "alt" => "Rice dish"]
+      ];
+      
+      $displayFoods = !empty($randomFoods) ? $randomFoods : $fallbackImages;
+      
+      foreach ($displayFoods as $index => $food) {
+          $imageUrl = isset($food['image_url']) ? $food['image_url'] : $food['url'];
+          $altText = isset($food['item_name']) ? $food['item_name'] : $food['alt'];
+      ?>
       <div class="overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop" 
-             alt="Salad dish" class="w-full h-full object-cover hover:opacity-80 transition-opacity">
+        <img src="<?php echo htmlspecialchars($imageUrl); ?>" 
+             alt="<?php echo htmlspecialchars($altText); ?>" class="w-full h-full object-cover hover:opacity-80 transition-opacity">
       </div>
-      <div class="overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
-             alt="Meat dish" class="w-full h-full object-cover hover:opacity-80 transition-opacity">
-      </div>
-      <div class="overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" 
-             alt="Wine and appetizer" class="w-full h-full object-cover hover:opacity-80 transition-opacity">
-      </div>
-      <div class="overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=1980&auto=format&fit=crop" 
-             alt="Rice dish" class="w-full h-full object-cover hover:opacity-80 transition-opacity">
-      </div>
+      <?php } ?>
     </div>
   </div>
 </section>
+
+<!--featured food items-->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl md:text-5xl text-gray-700 italic mb-4">Featured Dishes</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Discover our most popular and delicious dishes, prepared with the finest ingredients and served with exceptional care.</p>
+    </div>
+
+    <?php
+    // Fetch featured food items
+    try {
+      $stmt = $pdo->prepare("SELECT * FROM food_menu WHERE availability = 1 AND is_featured = 1 ORDER BY RAND() LIMIT 6");
+      $stmt->execute();
+      $featuredFoods = $stmt->fetchAll();
+    } catch(PDOException $e) {
+      $featuredFoods = [];
+    }
+
+    if (!empty($featuredFoods)):
+    ?>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <?php foreach ($featuredFoods as $item): ?>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="<?= htmlspecialchars($item['image_url'] ?? 'https://via.placeholder.com/400x300?text=No+Image') ?>"
+               alt="<?= htmlspecialchars($item['item_name']) ?>"
+               class="w-full h-48 object-cover object-center">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2"><?= htmlspecialchars($item['item_name']) ?></h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-2"><?= htmlspecialchars($item['description'] ?? 'No description available.') ?></p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-black"><?= formatCurrency($item['price']) ?></span>
+              <form class="add-to-cart-form">
+                <input type="hidden" name="item_id" value="<?= $item['menu_item_id'] ?>">
+                <input type="hidden" name="item_name" value="<?= htmlspecialchars($item['item_name']) ?>">
+                <input type="hidden" name="item_price" value="<?= $item['price'] ?>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                  Add to Cart
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="food.php" class="inline-flex items-center px-6 py-3 border border-black text-black hover:bg-black hover:text-white transition-colors rounded-lg font-medium">
+        View Full Menu
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+    <?php else: ?>
+    <div class="text-center py-12">
+      <p class="text-gray-600 text-lg">Featured dishes will be available soon. Check out our <a href="food.php" class="text-black hover:underline">full menu</a>.</p>
+    </div>
+    <?php endif; ?>
+  </div>
+</section>
+
 <!--bar content-->
 <section class="bg-white py-16">
   <div class="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row items-center justify-between">
