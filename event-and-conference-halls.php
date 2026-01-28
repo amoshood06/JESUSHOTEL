@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col items-center gap-20 text-center">
+    <!-- <div class="flex flex-col items-center gap-20 text-center">
       
       <div class="flex flex-col items-center">
         <div class="text-[#D48255] mb-6">
@@ -129,7 +129,7 @@
         </p>
       </div>
 
-    </div>
+    </div> -->
   </div>
 </section>
 <!-- event services section-->
