@@ -225,9 +225,9 @@ try {
         </div>
         <a href="contacts.php" class="hover:text-[#D48255] border-b pb-2">CONTACT US</a>
         <a href="cart.php" class="flex items-center gap-2 hover:text-[#D48255] border-b pb-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-          </svg>
+          </svg> -->
           <span>Cart 🛒
             <?php if ($cartCount > 0): ?>
               (<?= $cartCount > 99 ? '99+' : $cartCount ?>)
