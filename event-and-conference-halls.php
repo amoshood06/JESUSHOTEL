@@ -53,7 +53,7 @@
       <div class="relative overflow-hidden shadow-2xl border-8 border-white">
         <img src="asset/image/bbd.jpeg" 
              alt="Event Setup" 
-             class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
+             class="w-full h-[500px] transition-transform duration-700 group-hover:scale-105">
         
         <div class="absolute top-8 left-1/2 -translate-x-1/2">
           <a href="contacts.php" class="bg-white/80 backdrop-blur-sm border border-black/20 rounded-full px-8 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black flex items-center gap-3 hover:bg-black hover:text-white transition-all shadow-lg">
