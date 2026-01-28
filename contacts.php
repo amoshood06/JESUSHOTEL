@@ -1,4 +1,43 @@
-<?php include 'header-one.php'; ?>
+<?php 
+include 'header-one.php';
+
+$emailSent = false;
+$emailError = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstName = trim($_POST['first_name'] ?? '');
+    $lastName = trim($_POST['last_name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+    
+    // Validate form inputs
+    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($message)) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Email headers
+            $to = 'avillaokadahotel@gmail.com';
+            $subject = "New Contact Form Submission from $firstName $lastName";
+            $body = "Name: $firstName $lastName\n";
+            $body .= "Email: $email\n";
+            $body .= "Message:\n$message";
+            
+            $headers = "From: $email\r\n";
+            $headers .= "Reply-To: $email\r\n";
+            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+            
+            // Send email
+            if (mail($to, $subject, $body, $headers)) {
+                $emailSent = true;
+            } else {
+                $emailError = true;
+            }
+        } else {
+            $emailError = true;
+        }
+    } else {
+        $emailError = true;
+    }
+}
+?>
 <!-- Contact Us Section -->
 <section class="w-full bg-white py-16 px-6 text-center font-sans">
   <div class="max-w-4xl mx-auto">
@@ -54,28 +93,28 @@
       <h4 class="text-xs uppercase tracking-widest font-bold mb-2">Send Us A Message</h4>
       <div class="w-10 h-[2px] bg-[#D48255] mb-8"></div>
       
-      <form class="space-y-6">
+      <form class="space-y-6" method="POST">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] uppercase font-bold text-gray-400 mb-2">Name <span class="text-red-500">*</span></label>
-            <input type="text" class="w-full bg-white p-3 text-black focus:outline-none">
+            <input type="text" name="first_name" required class="w-full bg-white p-3 text-black focus:outline-none">
             <span class="text-[9px] text-gray-500">First</span>
           </div>
           <div class="pt-6 sm:pt-0">
             <label class="hidden sm:block text-[10px] uppercase font-bold text-gray-400 mb-2">&nbsp;</label>
-            <input type="text" class="w-full bg-white p-3 text-black focus:outline-none">
+            <input type="text" name="last_name" required class="w-full bg-white p-3 text-black focus:outline-none">
             <span class="text-[9px] text-gray-500">Last</span>
           </div>
         </div>
         
         <div>
           <label class="block text-[10px] uppercase font-bold text-gray-400 mb-2">Email <span class="text-red-500">*</span></label>
-          <input type="email" class="w-full bg-white p-3 text-black focus:outline-none">
+          <input type="email" name="email" required class="w-full bg-white p-3 text-black focus:outline-none">
         </div>
         
         <div>
           <label class="block text-[10px] uppercase font-bold text-gray-400 mb-2">Comment or Message <span class="text-red-500">*</span></label>
-          <textarea rows="5" class="w-full bg-white p-3 text-black focus:outline-none"></textarea>
+          <textarea rows="5" name="message" required class="w-full bg-white p-3 text-black focus:outline-none"></textarea>
         </div>
         
         <button type="submit" class="bg-[#D48255] text-white px-10 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors">
@@ -86,5 +125,30 @@
   </div>
 </section>
 
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-4 right-4 z-[10000] px-6 py-3 bg-green-500 text-white rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none">
+  Email sent successfully!
+</div>
+
+<script>
+function showToast(message = 'Email sent successfully!') {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.remove('opacity-0');
+  toast.classList.add('opacity-100');
+  
+  setTimeout(() => {
+    toast.classList.remove('opacity-100');
+    toast.classList.add('opacity-0');
+  }, 3000);
+}
+
+<?php if ($emailSent): ?>
+  showToast('Email sent successfully!');
+<?php elseif ($emailError): ?>
+  showToast('Error sending email. Please try again.');
+<?php endif; ?>
+</script>
 
 <?php include 'footer-one.php'; ?>
