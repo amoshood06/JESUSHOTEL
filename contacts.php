@@ -17,7 +17,7 @@
   <div class="relative z-10 bg-[#222222]/90 p-10 md:p-16 text-center max-w-3xl border border-white/10">
     <h2 class="font-serif text-2xl md:text-3xl text-white italic mb-2">Inner peace is achieved with balance.</h2>
     <p class="text-[10px] uppercase tracking-[0.3em] text-gray-300 mb-8">- THIS IS HOW IT FEEL WHEN STAYING HERE -</p>
-    <button class="border border-white rounded-full px-8 py-2 text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+    <button onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })" class="border border-white rounded-full px-8 py-2 text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white hover:text-black transition-all">
       EMAIL US <i class="ml-2 far fa-envelope"></i>
     </button>
   </div>
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="bg-transparent">
+    <div class="bg-transparent" id="contact-form">
       <h4 class="text-xs uppercase tracking-widest font-bold mb-2">Send Us A Message</h4>
       <div class="w-10 h-[2px] bg-[#D48255] mb-8"></div>
       
