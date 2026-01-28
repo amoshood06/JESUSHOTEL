@@ -56,7 +56,7 @@
              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
         
         <div class="absolute top-8 left-1/2 -translate-x-1/2">
-          <a href="#" class="bg-white/80 backdrop-blur-sm border border-black/20 rounded-full px-8 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black flex items-center gap-3 hover:bg-black hover:text-white transition-all shadow-lg">
+          <a href="contacts.php" class="bg-white/80 backdrop-blur-sm border border-black/20 rounded-full px-8 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black flex items-center gap-3 hover:bg-black hover:text-white transition-all shadow-lg">
             Start Planning
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
