@@ -111,8 +111,6 @@
   </div>
 </footer>
 
-</div>
-
 </body>
     <script src="app.js"></script>
     <script src="asset/js/cart-ajax.js"></script>

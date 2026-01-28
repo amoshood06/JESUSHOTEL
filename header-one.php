@@ -243,6 +243,3 @@ try {
     </div>
   </div>
 </header>
-
-<div class="h-screen bg-gray-50">
-    
