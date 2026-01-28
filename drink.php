@@ -53,7 +53,7 @@ try {
                         <div class="relative h-56 overflow-hidden">
                             <img src="<?= htmlspecialchars($item['image_url'] ?? 'https://via.placeholder.com/400x300?text=No+Image') ?>"
                                  alt="<?= htmlspecialchars($item['item_name']) ?>"
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                 class="w-full h-full group-hover:scale-110 transition-transform duration-300">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2"><?= htmlspecialchars($item['item_name']) ?></h3>
