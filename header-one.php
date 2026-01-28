@@ -73,7 +73,7 @@ try {
         <div class="absolute top-full left-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
           <a href="standard-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Standard Room</a>
           <a href="deluxe-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Deluxe Room</a>
-          <a href="executive-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Executive Suite</a>
+          <a href="executive-rooms.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Executive Room</a>
         </div>
       </div>
       <!--desktop restaurant menu-->
@@ -178,7 +178,7 @@ try {
           <div x-show="open" x-transition class="pl-4 pt-2 flex flex-col gap-4 text-sm text-gray-600">
             <a href="standard-rooms.php" class="hover:text-[#D48255]">Standard Room</a>
             <a href="deluxe-rooms.php" class="hover:text-[#D48255]">Deluxe Room</a>
-            <a href="executive-rooms.php" class="hover:text-[#D48255]">Executive Suite</a>
+            <a href="executive-rooms.php" class="hover:text-[#D48255]">Executive Room</a>
           </div>
         </div>
         <div x-data="{ open: false, foodOpen: false, drinkOpen: false }">
