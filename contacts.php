@@ -1,6 +1,4 @@
 <?php 
-include 'header-one.php';
-
 $emailSent = false;
 $emailError = false;
 
@@ -26,17 +24,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Send email
             if (mail($to, $subject, $body, $headers)) {
-                $emailSent = true;
+                $_SESSION['emailSent'] = true;
+                header('Location: contacts.php#contact-form');
+                exit();
             } else {
-                $emailError = true;
+                $_SESSION['emailError'] = true;
             }
         } else {
-            $emailError = true;
+            $_SESSION['emailError'] = true;
         }
     } else {
-        $emailError = true;
+        $_SESSION['emailError'] = true;
     }
 }
+
+// Check for session messages
+$emailSent = isset($_SESSION['emailSent']) && $_SESSION['emailSent'];
+$emailError = isset($_SESSION['emailError']) && $_SESSION['emailError'];
+
+// Clear session messages
+if ($emailSent || $emailError) {
+    unset($_SESSION['emailSent']);
+    unset($_SESSION['emailError']);
+}
+
+include 'header-one.php';
 ?>
 <!-- Contact Us Section -->
 <section class="w-full bg-white py-16 px-6 text-center font-sans">
@@ -124,30 +136,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 </section>
-
-
 <!-- Toast Notification -->
-<div id="toast" class="fixed top-4 right-4 z-[10000] px-6 py-3 bg-green-500 text-white rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none">
+<div id="toast" class="fixed top-4 right-4 z-[10000] px-6 py-3 bg-green-500 text-white rounded-lg shadow-lg opacity-0 transition-opacity duration-500 pointer-events-none">
   Email sent successfully!
 </div>
 
 <script>
-function showToast(message = 'Email sent successfully!') {
+function showToast(message = 'Email sent successfully!', isError = false) {
   const toast = document.getElementById('toast');
   toast.textContent = message;
-  toast.classList.remove('opacity-0');
-  toast.classList.add('opacity-100');
   
+  if (isError) {
+    toast.classList.remove('bg-green-500');
+    toast.classList.add('bg-red-500');
+  } else {
+    toast.classList.remove('bg-red-500');
+    toast.classList.add('bg-green-500');
+  }
+  
+  // Show toast
+  setTimeout(() => {
+    toast.classList.remove('opacity-0');
+    toast.classList.add('opacity-100');
+  }, 100);
+  
+  // Hide toast after 3 seconds
   setTimeout(() => {
     toast.classList.remove('opacity-100');
     toast.classList.add('opacity-0');
-  }, 3000);
+  }, 3100);
 }
 
+// Check if email was sent
 <?php if ($emailSent): ?>
-  showToast('Email sent successfully!');
+showToast('Email sent successfully!', false);
 <?php elseif ($emailError): ?>
-  showToast('Error sending email. Please try again.');
+showToast('Error sending email. Please try again.', true);
 <?php endif; ?>
 </script>
 
