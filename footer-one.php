@@ -31,11 +31,12 @@
 <!--cart-->
 <a href="cart.php" 
    target="_blank" 
-   class="whatsapp-bounce fixed bottom-24 right-6 z-[9999] flex items-center justify-center w-14 h-14 bg-[#D48255] rounded-full shadow-2xl transition-all active:scale-95 group"
+   class="whatsapp-bounce fixed bottom-24 right-6 z-[9999] flex items-center justify-center w-14 h-14 bg-[#D48255] rounded-full shadow-2xl transition-all active:scale-95 group relative"
    title="View cart">
   <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
     <path d="M7 18c-1.104 0-1.99.896-1.99 2s.886 2 1.99 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-1.99.896-1.99 2s.886 2 1.99 2 2-.896 2-2-.896-2-2-2zm-12.83-3.25l1.1-2h7.72c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 16.37 5.48 17 6.61 17H19v-2H6.61c-.42 0-.79-.26-.93-.65z"/>
   </svg>
+  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">0</span>
   <span class="absolute right-16 bg-[#222222] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-2 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
     Cart Items
   </span>
