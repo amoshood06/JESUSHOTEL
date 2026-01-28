@@ -183,7 +183,7 @@ try {
         </div>
         <div x-data="{ open: false, foodOpen: false, drinkOpen: false }">
           <button @click="open = !open" class="w-full flex justify-between items-center hover:text-[#D48255] border-b pb-2">
-            <span>RESTAURANT</span>
+            <span>RESTAURANT AND BAR</span>
             <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div x-show="open" x-transition class="pl-4 pt-2 flex flex-col gap-4 text-sm text-gray-600">
@@ -209,6 +209,7 @@ try {
                 <?php endforeach; ?>
               </div>
             </div>
+            <a href="restaurant-and-bar.php" class="hover:text-[#D48255]">Coursine</a>
           </div>
         </div>
                 <div x-data="{ open: false }">
@@ -217,7 +218,7 @@ try {
             <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div x-show="open" x-transition class="pl-4 pt-2 flex flex-col gap-4 text-sm text-gray-600">
-            <a href="restaurant-and-bar.php" class="hover:text-[#D48255]">Restaurant and Bar</a>
+            
             <!-- <a href="#" class="hover:text-[#D48255]">Pool and Fitness Center</a>
             <a href="#" class="hover:text-[#D48255]">Spa and Beauty Saloon</a> -->
             <a href="event-and-conference-halls.php" class="hover:text-[#D48255]">Event and Conference Halls</a>

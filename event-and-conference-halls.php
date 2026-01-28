@@ -83,9 +83,9 @@
         <div class="text-[#D48255] mb-6">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         </div>
-        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">Avilla hall.</h3>
+        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">AVILLA BAR HALL</h3>
         <p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">
-          Avilla hall with a capacity of 250-400 persons
+          Avilla Bar hall with a capacity of 150-250 persons
         </p>
       </div>
 
@@ -93,9 +93,9 @@
         <div class="text-[#D48255] mb-6">
           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
         </div>
-        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">Avilla Hall.</h3>
+        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">AVILLA EATERY HALL</h3>
         <p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">
-          Avilla Hall with a capacity of 100-150 persons
+          Avilla Eatery Hall with a capacity of 100-150 persons
         </p>
       </div>
 
@@ -103,9 +103,9 @@
         <div class="text-[#D48255] mb-6">
           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </div>
-        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">Avila hall.</h3>
+        <h3 class="font-serif text-3xl text-gray-800 italic mb-4">AVILLA VIP HALL</h3>
         <p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">
-          Avilla hall with a capacity of 60-100 persons
+          Avilla Vip hall with a capacity of 25-30 persons
         </p>
       </div>
     </div>
