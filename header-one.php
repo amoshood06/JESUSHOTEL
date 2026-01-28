@@ -106,6 +106,7 @@ try {
             </div>
           </div>
         </div>
+        <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
       </div>
       <div class="group relative py-2 cursor-pointer">
         <div class="flex items-center gap-1 hover:text-[#D48255]">
@@ -113,7 +114,7 @@ try {
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" /></svg>
         </div>
         <div class="absolute top-full left-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
-          <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
+          
           <!-- <a href="#" class="block px-4 py-3 hover:bg-gray-50 text-xs">Pool and Fitness Center</a>
           <a href="#" class="block px-4 py-3 hover:bg-gray-50 text-xs">Spa and Beauty Saloon</a> -->
           <a href="event-and-conference-halls.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Event and Conference Halls</a>
