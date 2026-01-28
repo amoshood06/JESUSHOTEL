@@ -17,7 +17,7 @@
 <section class="relative w-full min-h-[800px] flex items-center justify-center py-20 px-6 font-sans overflow-hidden">
   
   <div class="absolute inset-0 z-0">
-    <img src="assets/gallery/IMG-20251129-WA0038.jpg" 
+    <img src="asset/gallery/IMG-20251129-WA0038.jpg" 
          class="w-full h-full object-cover" 
          alt="Executive Suite Background">
     <div class="absolute inset-0 bg-black/50"></div>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="z-10 w-full md:w-3/5 h-[550px] overflow-hidden shadow-2xl border-8 border-white">
-      <img src="assets/gallery/IMG-20251129-WA0038.jpg" 
+      <img src="asset/gallery/IMG-20251129-WA0038.jpg" 
            alt="Executive Double Room Interior" 
            class="w-full h-full object-cover">
     </div>
