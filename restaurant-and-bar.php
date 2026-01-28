@@ -1,6 +1,6 @@
 <?php 
 include 'header-one.php'; 
-include 'config/database.php';
+// include 'config/database.php';
 
 // Fetch 4 random food items with images
 try {
