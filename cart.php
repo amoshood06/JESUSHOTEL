@@ -5,9 +5,7 @@ error_reporting(E_ALL);
 
 require_once 'config/database.php';
 
-include 'header-one.php';
-
-// Handle removing item from cart
+// Handle removing item from cart BEFORE any output
 if (isset($_POST['remove_item_id'])) {
     $removeItemId = filter_input(INPUT_POST, 'remove_item_id', FILTER_VALIDATE_INT);
     if ($removeItemId && isset($_SESSION['cart'][$removeItemId])) {
@@ -17,6 +15,8 @@ if (isset($_POST['remove_item_id'])) {
         exit();
     }
 }
+
+include 'header-one.php';
 
 $cartItems = $_SESSION['cart'] ?? [];
 $cartTotal = 0;
