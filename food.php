@@ -102,7 +102,7 @@ try {
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src="<?= htmlspecialchars($item['image_url'] ?? 'https://via.placeholder.com/400x300?text=No+Image') ?>"
                                  alt="<?= htmlspecialchars($item['item_name']) ?>"
-                                 class="w-full h-48 object-cover object-center">
+                                 class="w-full h-48 object-center">
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold text-gray-800 mb-2"><?= htmlspecialchars($item['item_name']) ?></h3>
                                 <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($item['description'] ?? 'No description available.') ?></p>
