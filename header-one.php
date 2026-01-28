@@ -104,11 +104,9 @@ try {
                 <a href="drink.php?drink_category=<?= urlencode($category) ?>" class="block px-4 py-2 hover:bg-gray-50 text-xs hover:text-[#D48255]"><?= htmlspecialchars($category) ?></a>
               <?php endforeach; ?>
             </div>
-          </div>
-          <div>
             <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
+          </div>
         </div>
-        
       </div>
       <div class="group relative py-2 cursor-pointer">
         <div class="flex items-center gap-1 hover:text-[#D48255]">
