@@ -105,8 +105,10 @@ try {
               <?php endforeach; ?>
             </div>
           </div>
+          <div>
+            <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
         </div>
-        <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
+        
       </div>
       <div class="group relative py-2 cursor-pointer">
         <div class="flex items-center gap-1 hover:text-[#D48255]">
