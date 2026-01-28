@@ -4,6 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once 'config/database.php';
+
 $emailSent = false;
 $emailError = false;
 
@@ -16,25 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate form inputs
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($message)) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            // Email headers
-            $to = 'avillaokadahotel@gmail.com';
-            $subject = "New Contact Form Submission from $firstName $lastName";
-            $body = "Name: $firstName $lastName\n";
-            $body .= "Email: $email\n";
-            $body .= "Message:\n$message";
-            
-            $headers = "From: $email\r\n";
-            $headers .= "Reply-To: $email\r\n";
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            
-            // Send email with error handling
             try {
-                $mailSent = @mail($to, $subject, $body, $headers);
-                if ($mailSent) {
-                    $_SESSION['emailSent'] = true;
-                } else {
-                    $_SESSION['emailError'] = true;
-                }
+                // Save contact message to database
+                $stmt = $pdo->prepare("INSERT INTO contact_messages (first_name, last_name, email, message, created_at) VALUES (?, ?, ?, ?, NOW())");
+                $stmt->execute([$firstName, $lastName, $email, $message]);
+                
+                $_SESSION['emailSent'] = true;
+                
+                // Send confirmation email to user (if mail is available)
+                $userSubject = "We received your message - Avilla Okada Hotel";
+                $userBody = "Dear $firstName,\n\n";
+                $userBody .= "Thank you for contacting Avilla Okada Hotel. We have received your message and will get back to you soon.\n\n";
+                $userBody .= "Best regards,\nAvilla Okada Hotel Team";
+                $userHeaders = "From: avillaokadahotel@gmail.com\r\n";
+                $userHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
+                
+                @mail($email, $userSubject, $userBody, $userHeaders);
+                
             } catch (Exception $e) {
                 $_SESSION['emailError'] = true;
             }
