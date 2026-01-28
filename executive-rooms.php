@@ -105,7 +105,7 @@
           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 1.9 1.55 3.1 3.48 3.53V21h3v-2.13c2.23-.44 3.5-1.75 3.5-3.64 0-2.25-1.56-3.39-4.3-4.33z"/></svg>
         </div>
         <h3 class="text-[13px] font-bold uppercase tracking-[0.2em] mb-4 text-black">EXECUTIVE RATE</h3>
-        <p class="text-base font-bold text-gray-700">₦ 85,000.00</p>
+        <p class="text-base font-bold text-gray-700">₦20,000.00</p>
       </div>
     </div>
   </div>
@@ -128,17 +128,17 @@
     <div id="execSlider" class="flex transition-transform duration-700 ease-in-out">
       
       <div class="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-        <img src="https://images.unsplash.com/photo-1590490360416-6218174523b4?q=80&w=800" alt="Executive Room View 1" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800" alt="Executive Room View 2" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1596436889420-54a434c449c2?q=80&w=800" alt="Executive Room View 3" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=800" alt="Executive Room View 4" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 1" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 2" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 3" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 4" class="w-full h-64 object-cover shadow-md">
       </div>
 
       <div class="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-        <img src="https://images.unsplash.com/photo-1591088398332-8a77d399e80c?q=80&w=800" alt="Executive Room View 5" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" alt="Executive Room View 6" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800" alt="Executive Room View 7" class="w-full h-64 object-cover shadow-md">
-        <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=800" alt="Executive Room View 8" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 5" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 6" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 7" class="w-full h-64 object-cover shadow-md">
+        <img src="asset/gallary/IMG-20251129-WA0038.jpg" alt="Executive Room View 8" class="w-full h-64 object-cover shadow-md">
       </div>
     </div>
 
