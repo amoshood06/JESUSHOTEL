@@ -51,7 +51,7 @@
 
     <div class="lg:w-6/12 -mt-12 lg:-mt-0 lg:-ml-12 relative z-10 group">
       <div class="relative overflow-hidden shadow-2xl border-8 border-white">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" 
+        <img src="asset/image/bbd.jpeg" 
              alt="Event Setup" 
              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
         
