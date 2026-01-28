@@ -87,7 +87,7 @@
     
     <div class="w-full lg:w-1/4 pt-10">
       <div class="relative mb-6">
-        <h2 class="text-[#D48255] font-serif text-5xl md:text-6xl italic">Suites</h2>
+        <h2 class="text-[#D48255] font-serif text-5xl md:text-6xl italic">Rooms</h2>
         <div class="absolute top-1/2 left-full ml-4 w-32 h-[1px] bg-[#D48255] hidden lg:block"></div>
       </div>
       <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
