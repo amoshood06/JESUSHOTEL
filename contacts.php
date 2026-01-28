@@ -27,19 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $headers .= "Reply-To: $email\r\n";
             $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
             
-            // Send email
-            if (mail($to, $subject, $body, $headers)) {
-                $_SESSION['emailSent'] = true;
-                header('Location: contacts.php#contact-form');
-                exit();
-            } else {
+            // Send email with error handling
+            try {
+                $mailSent = @mail($to, $subject, $body, $headers);
+                if ($mailSent) {
+                    $_SESSION['emailSent'] = true;
+                } else {
+                    $_SESSION['emailError'] = true;
+                }
+            } catch (Exception $e) {
                 $_SESSION['emailError'] = true;
             }
+            
+            // Redirect after processing
+            header('Location: contacts.php#contact-form');
+            exit();
         } else {
             $_SESSION['emailError'] = true;
+            header('Location: contacts.php#contact-form');
+            exit();
         }
     } else {
         $_SESSION['emailError'] = true;
+        header('Location: contacts.php#contact-form');
+        exit();
     }
 }
 
