@@ -104,7 +104,6 @@ try {
                 <a href="drink.php?drink_category=<?= urlencode($category) ?>" class="block px-4 py-2 hover:bg-gray-50 text-xs hover:text-[#D48255]"><?= htmlspecialchars($category) ?></a>
               <?php endforeach; ?>
             </div>
-            <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
           </div>
         </div>
       </div>
@@ -114,7 +113,7 @@ try {
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" /></svg>
         </div>
         <div class="absolute top-full left-0 w-48 bg-white shadow-xl hidden group-hover:block border-t-2 border-[#D48255]">
-          
+          <a href="restaurant-and-bar.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Coursine</a>
           <!-- <a href="#" class="block px-4 py-3 hover:bg-gray-50 text-xs">Pool and Fitness Center</a>
           <a href="#" class="block px-4 py-3 hover:bg-gray-50 text-xs">Spa and Beauty Saloon</a> -->
           <a href="event-and-conference-halls.php" class="block px-4 py-3 hover:bg-gray-50 text-xs">Event and Conference Halls</a>
@@ -210,7 +209,6 @@ try {
                 <?php endforeach; ?>
               </div>
             </div>
-            <a href="restaurant-and-bar.php" class="hover:text-[#D48255]">Coursine</a>
           </div>
         </div>
                 <div x-data="{ open: false }">
@@ -219,7 +217,7 @@ try {
             <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           <div x-show="open" x-transition class="pl-4 pt-2 flex flex-col gap-4 text-sm text-gray-600">
-            
+            <a href="restaurant-and-bar.php" class="hover:text-[#D48255]">Coursine</a>
             <!-- <a href="#" class="hover:text-[#D48255]">Pool and Fitness Center</a>
             <a href="#" class="hover:text-[#D48255]">Spa and Beauty Saloon</a> -->
             <a href="event-and-conference-halls.php" class="hover:text-[#D48255]">Event and Conference Halls</a>
